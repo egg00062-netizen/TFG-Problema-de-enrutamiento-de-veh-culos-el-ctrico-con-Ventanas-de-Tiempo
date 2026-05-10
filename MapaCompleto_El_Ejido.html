@@ -1,0 +1,2191 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+    
+            <meta name="viewport" content="width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+            <style>
+                #map_98ce2bb500bb88131bba6f8ee93befbd {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+                .leaflet-container { font-size: 1rem; }
+            </style>
+
+            <style>html, body {
+                width: 100%;
+                height: 100%;
+                margin: 0;
+                padding: 0;
+            }
+            </style>
+
+            <style>#map {
+                position:absolute;
+                top:0;
+                bottom:0;
+                right:0;
+                left:0;
+                }
+            </style>
+
+            <script>
+                L_NO_TOUCH = false;
+                L_DISABLE_3D = false;
+            </script>
+
+        
+</head>
+<body>
+    
+    
+    <div style="
+        position: fixed;
+        bottom: 30px; right: 30px;
+        background-color: white;
+        border: 2px solid #2E86AB;
+        border-radius: 10px;
+        padding: 14px 18px;
+        font-family: Arial, sans-serif;
+        font-size: 12px;
+        box-shadow: 3px 3px 8px rgba(0,0,0,0.3);
+        z-index: 1000;
+        min-width: 250px;
+    ">
+        <b style="color:#2E86AB; font-size:14px;">
+            🏭 El Ejido
+        </b><br>
+        <hr style="margin:6px 0; border-color:#ddd;">
+        🏪 <b>Supermercados:</b> 50<br>
+        🚚 <b>Rutas totales:</b> 11<br>
+        &nbsp;&nbsp;&nbsp;
+            ├─ Sin recarga: 10<br>
+        &nbsp;&nbsp;&nbsp;
+            └─ ⚡ Con recarga: 1<br>
+        📍 <b>Km totales:</b> 1125.27 km<br>
+        💶 <b>Coste total:</b> 231.09 €<br>
+        <hr style="margin:6px 0; border-color:#ddd;">
+        <span style="color:#2E86AB;">━━</span>
+            Ruta sin recarga<br>
+        <span style="color:#C73E1D;">╌╌</span>
+            Ruta con recarga<br>
+        🔴 Almacén &nbsp;&nbsp;
+        🟠 Electrolinera<br>
+        <small style="color:#888;">
+            ☝ Usa el panel izquierdo para<br>
+            &nbsp;&nbsp;&nbsp;activar/desactivar rutas
+        </small>
+    </div>
+    
+    
+            <div class="folium-map" id="map_98ce2bb500bb88131bba6f8ee93befbd" ></div>
+        
+</body>
+<script>
+    
+    
+            var map_98ce2bb500bb88131bba6f8ee93befbd = L.map(
+                "map_98ce2bb500bb88131bba6f8ee93befbd",
+                {
+                    center: [36.7755, -2.8112],
+                    crs: L.CRS.EPSG3857,
+                    ...{
+  "zoom": 9,
+  "zoomControl": true,
+  "preferCanvas": false,
+}
+
+                }
+            );
+
+            
+
+        
+    
+            var tile_layer_aea31dae8c455e6e3a2cbdc16bd6bf99 = L.tileLayer(
+                "https://tile.openstreetmap.org/{z}/{x}/{y}.png",
+                {
+  "minZoom": 0,
+  "maxZoom": 19,
+  "maxNativeZoom": 19,
+  "noWrap": false,
+  "attribution": "\u0026copy; \u003ca href=\"https://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors",
+  "subdomains": "abc",
+  "detectRetina": false,
+  "tms": false,
+  "opacity": 1,
+}
+
+            );
+        
+    
+            tile_layer_aea31dae8c455e6e3a2cbdc16bd6bf99.addTo(map_98ce2bb500bb88131bba6f8ee93befbd);
+        
+    
+            var marker_f68cebb7ec64edceb09ea639e917ff94 = L.marker(
+                [36.7755, -2.8112],
+                {
+}
+            ).addTo(map_98ce2bb500bb88131bba6f8ee93befbd);
+        
+    
+            var icon_5ac594a86ab47310b4221e6051777805 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "home",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_c2349e2e6bab8df674616fba952ad885 = L.popup({
+  "maxWidth": 260,
+});
+
+        
+            
+                var html_aa3391ba0639fac5d24e03d3b1a32017 = $(`<div id="html_aa3391ba0639fac5d24e03d3b1a32017" style="width: 100.0%; height: 100.0%;"><div style="font-family:Arial; min-width:210px;">                 <b style="color:#C73E1D; font-size:14px;">                     🏭 El Ejido                 </b><br>                 <hr style="margin:4px 0;">                 🏪 <b>Supermercados:</b> 50<br>                 🚚 <b>Rutas totales:</b> 11<br>                 &nbsp;&nbsp;&nbsp;                     ├─ Sin recarga: 10<br>                 &nbsp;&nbsp;&nbsp;                     └─ ⚡ Con recarga: 1<br>                 📍 <b>Km totales:</b> 1125.27 km<br>                 💶 <b>Coste total:</b> 231.09 €             </div></div>`)[0];
+                popup_c2349e2e6bab8df674616fba952ad885.setContent(html_aa3391ba0639fac5d24e03d3b1a32017);
+            
+        
+
+        marker_f68cebb7ec64edceb09ea639e917ff94.bindPopup(popup_c2349e2e6bab8df674616fba952ad885)
+        ;
+
+        
+    
+    
+            marker_f68cebb7ec64edceb09ea639e917ff94.bindTooltip(
+                `<div>
+                     🏭 ALMACÉN: El Ejido
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_f68cebb7ec64edceb09ea639e917ff94.setIcon(icon_5ac594a86ab47310b4221e6051777805);
+            
+    
+            var feature_group_31cc63c1376ed4cd1da5a76e9ad22d79 = L.featureGroup(
+                {
+}
+            );
+        
+    
+            var circle_marker_67661467929bc7ade24ea68059e83228 = L.circleMarker(
+                [36.7755, -2.8112],
+                {"bubblingMouseEvents": true, "color": "#2E86AB", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#2E86AB", "fillOpacity": 0.85, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 3}
+            ).addTo(feature_group_31cc63c1376ed4cd1da5a76e9ad22d79);
+        
+    
+        var popup_3456913422b216210b266a865c9513ac = L.popup({
+  "maxWidth": 210,
+});
+
+        
+            
+                var html_0c27693114e2b2a6312f9525e5d7442f = $(`<div id="html_0c27693114e2b2a6312f9525e5d7442f" style="width: 100.0%; height: 100.0%;"><div style="font-family:Arial;                                    min-width:170px;">                         <b>Parada 1 de 4</b><br>                         <b>Covirán El Ejido S.N.</b><br>                         <hr style="margin:4px 0;">                         🚚 Conductor FUR-TA-01<br>                         🕐 Salida: 06:00<br>                         ⚡ Recarga: NO                                              </div></div>`)[0];
+                popup_3456913422b216210b266a865c9513ac.setContent(html_0c27693114e2b2a6312f9525e5d7442f);
+            
+        
+
+        circle_marker_67661467929bc7ade24ea68059e83228.bindPopup(popup_3456913422b216210b266a865c9513ac)
+        ;
+
+        
+    
+    
+            circle_marker_67661467929bc7ade24ea68059e83228.bindTooltip(
+                `<div>
+                     1. Covirán El Ejido S.N. — Conductor FUR-TA-01
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_31acc9219d7548a5d3ddb2d62141538a = L.circleMarker(
+                [36.7766, -2.8122],
+                {"bubblingMouseEvents": true, "color": "#2E86AB", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#2E86AB", "fillOpacity": 0.85, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 3}
+            ).addTo(feature_group_31cc63c1376ed4cd1da5a76e9ad22d79);
+        
+    
+        var popup_b1a09ab4fe369e7a40134b1e4592f2f2 = L.popup({
+  "maxWidth": 210,
+});
+
+        
+            
+                var html_a11aa173565e7eb6e9048ebacc6d2bec = $(`<div id="html_a11aa173565e7eb6e9048ebacc6d2bec" style="width: 100.0%; height: 100.0%;"><div style="font-family:Arial;                                    min-width:170px;">                         <b>Parada 2 de 4</b><br>                         <b>Covirán El Ejido M.E.</b><br>                         <hr style="margin:4px 0;">                         🚚 Conductor FUR-TA-01<br>                         🕐 Salida: 06:00<br>                         ⚡ Recarga: NO                                              </div></div>`)[0];
+                popup_b1a09ab4fe369e7a40134b1e4592f2f2.setContent(html_a11aa173565e7eb6e9048ebacc6d2bec);
+            
+        
+
+        circle_marker_31acc9219d7548a5d3ddb2d62141538a.bindPopup(popup_b1a09ab4fe369e7a40134b1e4592f2f2)
+        ;
+
+        
+    
+    
+            circle_marker_31acc9219d7548a5d3ddb2d62141538a.bindTooltip(
+                `<div>
+                     2. Covirán El Ejido M.E. — Conductor FUR-TA-01
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_fda21cb980970cfa4617123748399b2c = L.circleMarker(
+                [36.7888, -2.7855],
+                {"bubblingMouseEvents": true, "color": "#2E86AB", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#2E86AB", "fillOpacity": 0.85, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 3}
+            ).addTo(feature_group_31cc63c1376ed4cd1da5a76e9ad22d79);
+        
+    
+        var popup_7b567db094346ef0e5139e477067b141 = L.popup({
+  "maxWidth": 210,
+});
+
+        
+            
+                var html_5a85c681782b01858a8500d8a65dac9d = $(`<div id="html_5a85c681782b01858a8500d8a65dac9d" style="width: 100.0%; height: 100.0%;"><div style="font-family:Arial;                                    min-width:170px;">                         <b>Parada 3 de 4</b><br>                         <b>Covirán Sta Mª Águila</b><br>                         <hr style="margin:4px 0;">                         🚚 Conductor FUR-TA-01<br>                         🕐 Salida: 06:00<br>                         ⚡ Recarga: NO                                              </div></div>`)[0];
+                popup_7b567db094346ef0e5139e477067b141.setContent(html_5a85c681782b01858a8500d8a65dac9d);
+            
+        
+
+        circle_marker_fda21cb980970cfa4617123748399b2c.bindPopup(popup_7b567db094346ef0e5139e477067b141)
+        ;
+
+        
+    
+    
+            circle_marker_fda21cb980970cfa4617123748399b2c.bindTooltip(
+                `<div>
+                     3. Covirán Sta Mª Águila — Conductor FUR-TA-01
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_cfc5abc91603e6be4752b7d231a6fccf = L.circleMarker(
+                [36.8222, -2.8722],
+                {"bubblingMouseEvents": true, "color": "#2E86AB", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#2E86AB", "fillOpacity": 0.85, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 3}
+            ).addTo(feature_group_31cc63c1376ed4cd1da5a76e9ad22d79);
+        
+    
+        var popup_61f0932d31d52c0dec0e5fb1dffd34cf = L.popup({
+  "maxWidth": 210,
+});
+
+        
+            
+                var html_e5f42446a8cb903d546ac705fb84cd62 = $(`<div id="html_e5f42446a8cb903d546ac705fb84cd62" style="width: 100.0%; height: 100.0%;"><div style="font-family:Arial;                                    min-width:170px;">                         <b>Parada 4 de 4</b><br>                         <b>Covirán Dalías Cura</b><br>                         <hr style="margin:4px 0;">                         🚚 Conductor FUR-TA-01<br>                         🕐 Salida: 06:00<br>                         ⚡ Recarga: NO                                              </div></div>`)[0];
+                popup_61f0932d31d52c0dec0e5fb1dffd34cf.setContent(html_e5f42446a8cb903d546ac705fb84cd62);
+            
+        
+
+        circle_marker_cfc5abc91603e6be4752b7d231a6fccf.bindPopup(popup_61f0932d31d52c0dec0e5fb1dffd34cf)
+        ;
+
+        
+    
+    
+            circle_marker_cfc5abc91603e6be4752b7d231a6fccf.bindTooltip(
+                `<div>
+                     4. Covirán Dalías Cura — Conductor FUR-TA-01
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var poly_line_d88915a573b1105a3a7e4dab2a0ea5c9 = L.polyline(
+                [[36.7755, -2.8112], [36.7755, -2.8112], [36.7766, -2.8122], [36.7888, -2.7855], [36.8222, -2.8722], [36.7755, -2.8112]],
+                {"bubblingMouseEvents": true, "color": "#2E86AB", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "#2E86AB", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.7, "smoothFactor": 1.0, "stroke": true, "weight": 2}
+            ).addTo(feature_group_31cc63c1376ed4cd1da5a76e9ad22d79);
+        
+    
+            poly_line_d88915a573b1105a3a7e4dab2a0ea5c9.bindTooltip(
+                `<div>
+                     Conductor FUR-TA-01 | 4 tiendas | 24.09 km | Coste: 4.34 €
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            feature_group_31cc63c1376ed4cd1da5a76e9ad22d79.addTo(map_98ce2bb500bb88131bba6f8ee93befbd);
+        
+    
+            var feature_group_b1ac81a2da1327e50210a7f6947ae8de = L.featureGroup(
+                {
+}
+            );
+        
+    
+            var circle_marker_2eb206633b052da9e6c8be7996575ad0 = L.circleMarker(
+                [36.8212, -2.8712],
+                {"bubblingMouseEvents": true, "color": "#C73E1D", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#C73E1D", "fillOpacity": 0.85, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 3}
+            ).addTo(feature_group_b1ac81a2da1327e50210a7f6947ae8de);
+        
+    
+        var popup_595819ca2535555751d54026dfbeb9c7 = L.popup({
+  "maxWidth": 210,
+});
+
+        
+            
+                var html_c0ea544f4b1262c37c4ed989fc4c66dc = $(`<div id="html_c0ea544f4b1262c37c4ed989fc4c66dc" style="width: 100.0%; height: 100.0%;"><div style="font-family:Arial;                                    min-width:170px;">                         <b>Parada 1 de 5</b><br>                         <b>Covirán Dalías Rambla</b><br>                         <hr style="margin:4px 0;">                         🚚 Conductor FUR-TA-02<br>                         🕐 Salida: 06:00<br>                         ⚡ Recarga: NO                                              </div></div>`)[0];
+                popup_595819ca2535555751d54026dfbeb9c7.setContent(html_c0ea544f4b1262c37c4ed989fc4c66dc);
+            
+        
+
+        circle_marker_2eb206633b052da9e6c8be7996575ad0.bindPopup(popup_595819ca2535555751d54026dfbeb9c7)
+        ;
+
+        
+    
+    
+            circle_marker_2eb206633b052da9e6c8be7996575ad0.bindTooltip(
+                `<div>
+                     1. Covirán Dalías Rambla — Conductor FUR-TA-02
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_089bc9ababc744610fd966f03d0c81fc = L.circleMarker(
+                [36.8488, -2.9512],
+                {"bubblingMouseEvents": true, "color": "#C73E1D", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#C73E1D", "fillOpacity": 0.85, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 3}
+            ).addTo(feature_group_b1ac81a2da1327e50210a7f6947ae8de);
+        
+    
+        var popup_f240010fce279060d826cecfaffdefd4 = L.popup({
+  "maxWidth": 210,
+});
+
+        
+            
+                var html_9f109612042b5fb1d7113555787beac0 = $(`<div id="html_9f109612042b5fb1d7113555787beac0" style="width: 100.0%; height: 100.0%;"><div style="font-family:Arial;                                    min-width:170px;">                         <b>Parada 2 de 5</b><br>                         <b>Covirán Berja Rosal</b><br>                         <hr style="margin:4px 0;">                         🚚 Conductor FUR-TA-02<br>                         🕐 Salida: 06:00<br>                         ⚡ Recarga: NO                                              </div></div>`)[0];
+                popup_f240010fce279060d826cecfaffdefd4.setContent(html_9f109612042b5fb1d7113555787beac0);
+            
+        
+
+        circle_marker_089bc9ababc744610fd966f03d0c81fc.bindPopup(popup_f240010fce279060d826cecfaffdefd4)
+        ;
+
+        
+    
+    
+            circle_marker_089bc9ababc744610fd966f03d0c81fc.bindTooltip(
+                `<div>
+                     2. Covirán Berja Rosal — Conductor FUR-TA-02
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_182335f3ef8c322de718a23dac70228e = L.circleMarker(
+                [36.8477, -2.9522],
+                {"bubblingMouseEvents": true, "color": "#C73E1D", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#C73E1D", "fillOpacity": 0.85, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 3}
+            ).addTo(feature_group_b1ac81a2da1327e50210a7f6947ae8de);
+        
+    
+        var popup_c59ae34b570f0b35f8dfe10041a9ec3b = L.popup({
+  "maxWidth": 210,
+});
+
+        
+            
+                var html_009857c882a45ef220a123ab372ff1ef = $(`<div id="html_009857c882a45ef220a123ab372ff1ef" style="width: 100.0%; height: 100.0%;"><div style="font-family:Arial;                                    min-width:170px;">                         <b>Parada 3 de 5</b><br>                         <b>Covirán Berja Alcántara</b><br>                         <hr style="margin:4px 0;">                         🚚 Conductor FUR-TA-02<br>                         🕐 Salida: 06:00<br>                         ⚡ Recarga: NO                                              </div></div>`)[0];
+                popup_c59ae34b570f0b35f8dfe10041a9ec3b.setContent(html_009857c882a45ef220a123ab372ff1ef);
+            
+        
+
+        circle_marker_182335f3ef8c322de718a23dac70228e.bindPopup(popup_c59ae34b570f0b35f8dfe10041a9ec3b)
+        ;
+
+        
+    
+    
+            circle_marker_182335f3ef8c322de718a23dac70228e.bindTooltip(
+                `<div>
+                     3. Covirán Berja Alcántara — Conductor FUR-TA-02
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_272ddc7e0e29b86a4ff07065cdeab80b = L.circleMarker(
+                [36.7455, -2.9088],
+                {"bubblingMouseEvents": true, "color": "#C73E1D", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#C73E1D", "fillOpacity": 0.85, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 3}
+            ).addTo(feature_group_b1ac81a2da1327e50210a7f6947ae8de);
+        
+    
+        var popup_e944203b973989ab6ee74a7fe1aa6113 = L.popup({
+  "maxWidth": 210,
+});
+
+        
+            
+                var html_3c4f6f7681a9f5d809bb06f9bf098b5f = $(`<div id="html_3c4f6f7681a9f5d809bb06f9bf098b5f" style="width: 100.0%; height: 100.0%;"><div style="font-family:Arial;                                    min-width:170px;">                         <b>Parada 4 de 5</b><br>                         <b>Covirán Balanegra</b><br>                         <hr style="margin:4px 0;">                         🚚 Conductor FUR-TA-02<br>                         🕐 Salida: 06:00<br>                         ⚡ Recarga: NO                                              </div></div>`)[0];
+                popup_e944203b973989ab6ee74a7fe1aa6113.setContent(html_3c4f6f7681a9f5d809bb06f9bf098b5f);
+            
+        
+
+        circle_marker_272ddc7e0e29b86a4ff07065cdeab80b.bindPopup(popup_e944203b973989ab6ee74a7fe1aa6113)
+        ;
+
+        
+    
+    
+            circle_marker_272ddc7e0e29b86a4ff07065cdeab80b.bindTooltip(
+                `<div>
+                     4. Covirán Balanegra — Conductor FUR-TA-02
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_51bb924376e92d19f524cbc09fb41c9c = L.circleMarker(
+                [36.7499, -3.0266],
+                {"bubblingMouseEvents": true, "color": "#C73E1D", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#C73E1D", "fillOpacity": 0.85, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 3}
+            ).addTo(feature_group_b1ac81a2da1327e50210a7f6947ae8de);
+        
+    
+        var popup_e57bb628e156d70bcee18166c1b9e936 = L.popup({
+  "maxWidth": 210,
+});
+
+        
+            
+                var html_be505db3e0002c23324ef986b0558624 = $(`<div id="html_be505db3e0002c23324ef986b0558624" style="width: 100.0%; height: 100.0%;"><div style="font-family:Arial;                                    min-width:170px;">                         <b>Parada 5 de 5</b><br>                         <b>Covirán Quijote</b><br>                         <hr style="margin:4px 0;">                         🚚 Conductor FUR-TA-02<br>                         🕐 Salida: 06:00<br>                         ⚡ Recarga: NO                                              </div></div>`)[0];
+                popup_e57bb628e156d70bcee18166c1b9e936.setContent(html_be505db3e0002c23324ef986b0558624);
+            
+        
+
+        circle_marker_51bb924376e92d19f524cbc09fb41c9c.bindPopup(popup_e57bb628e156d70bcee18166c1b9e936)
+        ;
+
+        
+    
+    
+            circle_marker_51bb924376e92d19f524cbc09fb41c9c.bindTooltip(
+                `<div>
+                     5. Covirán Quijote — Conductor FUR-TA-02
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var poly_line_560b1e7e9bfcfeb82130cdcd50088a4f = L.polyline(
+                [[36.7755, -2.8112], [36.8212, -2.8712], [36.8488, -2.9512], [36.8477, -2.9522], [36.7455, -2.9088], [36.7499, -3.0266], [36.7755, -2.8112]],
+                {"bubblingMouseEvents": true, "color": "#C73E1D", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "#C73E1D", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.7, "smoothFactor": 1.0, "stroke": true, "weight": 2}
+            ).addTo(feature_group_b1ac81a2da1327e50210a7f6947ae8de);
+        
+    
+            poly_line_560b1e7e9bfcfeb82130cdcd50088a4f.bindTooltip(
+                `<div>
+                     Conductor FUR-TA-02 | 5 tiendas | 72.63 km | Coste: 13.07 €
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            feature_group_b1ac81a2da1327e50210a7f6947ae8de.addTo(map_98ce2bb500bb88131bba6f8ee93befbd);
+        
+    
+            var feature_group_8e43b62b4e6f4fb0be6bb431434c091a = L.featureGroup(
+                {
+}
+            );
+        
+    
+            var circle_marker_64285942fb2d90f2cd02846c61daa10c = L.circleMarker(
+                [36.7012, -2.7955],
+                {"bubblingMouseEvents": true, "color": "#44BBA4", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#44BBA4", "fillOpacity": 0.85, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 3}
+            ).addTo(feature_group_8e43b62b4e6f4fb0be6bb431434c091a);
+        
+    
+        var popup_6afe383f2994aef153557da69408b804 = L.popup({
+  "maxWidth": 210,
+});
+
+        
+            
+                var html_a0c24387a7ceb7341a0f4cc21585e47a = $(`<div id="html_a0c24387a7ceb7341a0f4cc21585e47a" style="width: 100.0%; height: 100.0%;"><div style="font-family:Arial;                                    min-width:170px;">                         <b>Parada 1 de 4</b><br>                         <b>Covirán Almerimar Ctra.</b><br>                         <hr style="margin:4px 0;">                         🚚 Conductor FUR-TA-03<br>                         🕐 Salida: 06:00<br>                         ⚡ Recarga: NO                                              </div></div>`)[0];
+                popup_6afe383f2994aef153557da69408b804.setContent(html_a0c24387a7ceb7341a0f4cc21585e47a);
+            
+        
+
+        circle_marker_64285942fb2d90f2cd02846c61daa10c.bindPopup(popup_6afe383f2994aef153557da69408b804)
+        ;
+
+        
+    
+    
+            circle_marker_64285942fb2d90f2cd02846c61daa10c.bindTooltip(
+                `<div>
+                     1. Covirán Almerimar Ctra. — Conductor FUR-TA-03
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_e3592dcfc310e7fb84346a7e1286a383 = L.circleMarker(
+                [36.6988, -2.7912],
+                {"bubblingMouseEvents": true, "color": "#44BBA4", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#44BBA4", "fillOpacity": 0.85, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 3}
+            ).addTo(feature_group_8e43b62b4e6f4fb0be6bb431434c091a);
+        
+    
+        var popup_7aec3c608eccce64e72161d739e4a39e = L.popup({
+  "maxWidth": 210,
+});
+
+        
+            
+                var html_187b9a0ba828845c98319c8f82d28205 = $(`<div id="html_187b9a0ba828845c98319c8f82d28205" style="width: 100.0%; height: 100.0%;"><div style="font-family:Arial;                                    min-width:170px;">                         <b>Parada 2 de 4</b><br>                         <b>Covirán Almerimar G.</b><br>                         <hr style="margin:4px 0;">                         🚚 Conductor FUR-TA-03<br>                         🕐 Salida: 06:00<br>                         ⚡ Recarga: NO                                              </div></div>`)[0];
+                popup_7aec3c608eccce64e72161d739e4a39e.setContent(html_187b9a0ba828845c98319c8f82d28205);
+            
+        
+
+        circle_marker_e3592dcfc310e7fb84346a7e1286a383.bindPopup(popup_7aec3c608eccce64e72161d739e4a39e)
+        ;
+
+        
+    
+    
+            circle_marker_e3592dcfc310e7fb84346a7e1286a383.bindTooltip(
+                `<div>
+                     2. Covirán Almerimar G. — Conductor FUR-TA-03
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_6620b3d13e0719f24d606feb16329fe6 = L.circleMarker(
+                [36.7212, -2.7155],
+                {"bubblingMouseEvents": true, "color": "#44BBA4", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#44BBA4", "fillOpacity": 0.85, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 3}
+            ).addTo(feature_group_8e43b62b4e6f4fb0be6bb431434c091a);
+        
+    
+        var popup_42bc80d0491ea6419972f5569546006f = L.popup({
+  "maxWidth": 210,
+});
+
+        
+            
+                var html_bb1a936d7c4c62b00c5fcb2cfa167166 = $(`<div id="html_bb1a936d7c4c62b00c5fcb2cfa167166" style="width: 100.0%; height: 100.0%;"><div style="font-family:Arial;                                    min-width:170px;">                         <b>Parada 3 de 4</b><br>                         <b>Covirán San Agustín</b><br>                         <hr style="margin:4px 0;">                         🚚 Conductor FUR-TA-03<br>                         🕐 Salida: 06:00<br>                         ⚡ Recarga: NO                                              </div></div>`)[0];
+                popup_42bc80d0491ea6419972f5569546006f.setContent(html_bb1a936d7c4c62b00c5fcb2cfa167166);
+            
+        
+
+        circle_marker_6620b3d13e0719f24d606feb16329fe6.bindPopup(popup_42bc80d0491ea6419972f5569546006f)
+        ;
+
+        
+    
+    
+            circle_marker_6620b3d13e0719f24d606feb16329fe6.bindTooltip(
+                `<div>
+                     3. Covirán San Agustín — Conductor FUR-TA-03
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_77df8eb4595861dfe0b0c9e3eb6cb610 = L.circleMarker(
+                [36.7644, -2.6188],
+                {"bubblingMouseEvents": true, "color": "#44BBA4", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#44BBA4", "fillOpacity": 0.85, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 3}
+            ).addTo(feature_group_8e43b62b4e6f4fb0be6bb431434c091a);
+        
+    
+        var popup_6a215278915ca6853f7bcd588ab448f6 = L.popup({
+  "maxWidth": 210,
+});
+
+        
+            
+                var html_46b06b6b37d0fb54dc44e284a97ffcf2 = $(`<div id="html_46b06b6b37d0fb54dc44e284a97ffcf2" style="width: 100.0%; height: 100.0%;"><div style="font-family:Arial;                                    min-width:170px;">                         <b>Parada 4 de 4</b><br>                         <b>Covirán Roquetas Pomares</b><br>                         <hr style="margin:4px 0;">                         🚚 Conductor FUR-TA-03<br>                         🕐 Salida: 06:00<br>                         ⚡ Recarga: NO                                              </div></div>`)[0];
+                popup_6a215278915ca6853f7bcd588ab448f6.setContent(html_46b06b6b37d0fb54dc44e284a97ffcf2);
+            
+        
+
+        circle_marker_77df8eb4595861dfe0b0c9e3eb6cb610.bindPopup(popup_6a215278915ca6853f7bcd588ab448f6)
+        ;
+
+        
+    
+    
+            circle_marker_77df8eb4595861dfe0b0c9e3eb6cb610.bindTooltip(
+                `<div>
+                     4. Covirán Roquetas Pomares — Conductor FUR-TA-03
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var poly_line_62666fa4e18d7afaef9c8379cff14114 = L.polyline(
+                [[36.7755, -2.8112], [36.7012, -2.7955], [36.6988, -2.7912], [36.7212, -2.7155], [36.7644, -2.6188], [36.7755, -2.8112]],
+                {"bubblingMouseEvents": true, "color": "#44BBA4", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "#44BBA4", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.7, "smoothFactor": 1.0, "stroke": true, "weight": 2}
+            ).addTo(feature_group_8e43b62b4e6f4fb0be6bb431434c091a);
+        
+    
+            poly_line_62666fa4e18d7afaef9c8379cff14114.bindTooltip(
+                `<div>
+                     Conductor FUR-TA-03 | 4 tiendas | 54.72 km | Coste: 9.85 €
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            feature_group_8e43b62b4e6f4fb0be6bb431434c091a.addTo(map_98ce2bb500bb88131bba6f8ee93befbd);
+        
+    
+            var feature_group_7c7cefe4bae3db7038c98c2cc0ae754e = L.featureGroup(
+                {
+}
+            );
+        
+    
+            var circle_marker_216294a559580a20a36db78bc4eca6d5 = L.circleMarker(
+                [36.7555, -2.6855],
+                {"bubblingMouseEvents": true, "color": "#F18F01", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#F18F01", "fillOpacity": 0.85, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 3}
+            ).addTo(feature_group_7c7cefe4bae3db7038c98c2cc0ae754e);
+        
+    
+        var popup_4cb80f919dae4dfa3beda4ce0db16ecb = L.popup({
+  "maxWidth": 210,
+});
+
+        
+            
+                var html_5f502d368f249aa4804120dbac65e6e4 = $(`<div id="html_5f502d368f249aa4804120dbac65e6e4" style="width: 100.0%; height: 100.0%;"><div style="font-family:Arial;                                    min-width:170px;">                         <b>Parada 1 de 4</b><br>                         <b>Covirán La Mojonera</b><br>                         <hr style="margin:4px 0;">                         🚚 Conductor FUR-TA-04<br>                         🕐 Salida: 06:00<br>                         ⚡ Recarga: NO                                              </div></div>`)[0];
+                popup_4cb80f919dae4dfa3beda4ce0db16ecb.setContent(html_5f502d368f249aa4804120dbac65e6e4);
+            
+        
+
+        circle_marker_216294a559580a20a36db78bc4eca6d5.bindPopup(popup_4cb80f919dae4dfa3beda4ce0db16ecb)
+        ;
+
+        
+    
+    
+            circle_marker_216294a559580a20a36db78bc4eca6d5.bindTooltip(
+                `<div>
+                     1. Covirán La Mojonera — Conductor FUR-TA-04
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_8e5a42cc5bb9134dbcc27581bbade5de = L.circleMarker(
+                [36.7355, -2.6288],
+                {"bubblingMouseEvents": true, "color": "#F18F01", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#F18F01", "fillOpacity": 0.85, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 3}
+            ).addTo(feature_group_7c7cefe4bae3db7038c98c2cc0ae754e);
+        
+    
+        var popup_d593c1acade42e775b38ab17169be7ff = L.popup({
+  "maxWidth": 210,
+});
+
+        
+            
+                var html_9d47a72a8aeed8ff76311441382b7d73 = $(`<div id="html_9d47a72a8aeed8ff76311441382b7d73" style="width: 100.0%; height: 100.0%;"><div style="font-family:Arial;                                    min-width:170px;">                         <b>Parada 2 de 4</b><br>                         <b>Covirán Roquetas Urb.</b><br>                         <hr style="margin:4px 0;">                         🚚 Conductor FUR-TA-04<br>                         🕐 Salida: 06:00<br>                         ⚡ Recarga: NO                                              </div></div>`)[0];
+                popup_d593c1acade42e775b38ab17169be7ff.setContent(html_9d47a72a8aeed8ff76311441382b7d73);
+            
+        
+
+        circle_marker_8e5a42cc5bb9134dbcc27581bbade5de.bindPopup(popup_d593c1acade42e775b38ab17169be7ff)
+        ;
+
+        
+    
+    
+            circle_marker_8e5a42cc5bb9134dbcc27581bbade5de.bindTooltip(
+                `<div>
+                     2. Covirán Roquetas Urb. — Conductor FUR-TA-04
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_0760c38cb31cba503b55d039d6ff748f = L.circleMarker(
+                [36.7422, -2.6212],
+                {"bubblingMouseEvents": true, "color": "#F18F01", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#F18F01", "fillOpacity": 0.85, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 3}
+            ).addTo(feature_group_7c7cefe4bae3db7038c98c2cc0ae754e);
+        
+    
+        var popup_7d4deb11ee3bb56ba8b9f9b7f36ecab7 = L.popup({
+  "maxWidth": 210,
+});
+
+        
+            
+                var html_c52cfe89d2d30a81e90176276282d789 = $(`<div id="html_c52cfe89d2d30a81e90176276282d789" style="width: 100.0%; height: 100.0%;"><div style="font-family:Arial;                                    min-width:170px;">                         <b>Parada 3 de 4</b><br>                         <b>Covirán Roquetas Marinas</b><br>                         <hr style="margin:4px 0;">                         🚚 Conductor FUR-TA-04<br>                         🕐 Salida: 06:00<br>                         ⚡ Recarga: NO                                              </div></div>`)[0];
+                popup_7d4deb11ee3bb56ba8b9f9b7f36ecab7.setContent(html_c52cfe89d2d30a81e90176276282d789);
+            
+        
+
+        circle_marker_0760c38cb31cba503b55d039d6ff748f.bindPopup(popup_7d4deb11ee3bb56ba8b9f9b7f36ecab7)
+        ;
+
+        
+    
+    
+            circle_marker_0760c38cb31cba503b55d039d6ff748f.bindTooltip(
+                `<div>
+                     3. Covirán Roquetas Marinas — Conductor FUR-TA-04
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_e303c6212d96d71f0c9d1affc779330d = L.circleMarker(
+                [37.0112, -2.5855],
+                {"bubblingMouseEvents": true, "color": "#F18F01", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#F18F01", "fillOpacity": 0.85, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 3}
+            ).addTo(feature_group_7c7cefe4bae3db7038c98c2cc0ae754e);
+        
+    
+        var popup_99df5a5a56bebd5f1f430d724423fced = L.popup({
+  "maxWidth": 210,
+});
+
+        
+            
+                var html_1938741b8b5e82546f6686238d53eb05 = $(`<div id="html_1938741b8b5e82546f6686238d53eb05" style="width: 100.0%; height: 100.0%;"><div style="font-family:Arial;                                    min-width:170px;">                         <b>Parada 4 de 4</b><br>                         <b>Covirán Alhabia</b><br>                         <hr style="margin:4px 0;">                         🚚 Conductor FUR-TA-04<br>                         🕐 Salida: 06:00<br>                         ⚡ Recarga: NO                                              </div></div>`)[0];
+                popup_99df5a5a56bebd5f1f430d724423fced.setContent(html_1938741b8b5e82546f6686238d53eb05);
+            
+        
+
+        circle_marker_e303c6212d96d71f0c9d1affc779330d.bindPopup(popup_99df5a5a56bebd5f1f430d724423fced)
+        ;
+
+        
+    
+    
+            circle_marker_e303c6212d96d71f0c9d1affc779330d.bindTooltip(
+                `<div>
+                     4. Covirán Alhabia — Conductor FUR-TA-04
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var poly_line_ff9f7f71b3df7834489d6d7969e0ed3e = L.polyline(
+                [[36.7755, -2.8112], [36.7555, -2.6855], [36.7355, -2.6288], [36.7422, -2.6212], [37.0112, -2.5855], [36.7755, -2.8112]],
+                {"bubblingMouseEvents": true, "color": "#F18F01", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "#F18F01", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.7, "smoothFactor": 1.0, "stroke": true, "weight": 2}
+            ).addTo(feature_group_7c7cefe4bae3db7038c98c2cc0ae754e);
+        
+    
+            poly_line_ff9f7f71b3df7834489d6d7969e0ed3e.bindTooltip(
+                `<div>
+                     Conductor FUR-TA-04 | 4 tiendas | 102.91 km | Coste: 18.52 €
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            feature_group_7c7cefe4bae3db7038c98c2cc0ae754e.addTo(map_98ce2bb500bb88131bba6f8ee93befbd);
+        
+    
+            var feature_group_0a88024dbbd824c63cd8955a0346a41b = L.featureGroup(
+                {
+}
+            );
+        
+    
+            var circle_marker_7ec663c4b481abb3e98ae9ba49ccc590 = L.circleMarker(
+                [36.8355, -2.6512],
+                {"bubblingMouseEvents": true, "color": "#A23B72", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#A23B72", "fillOpacity": 0.85, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 3}
+            ).addTo(feature_group_0a88024dbbd824c63cd8955a0346a41b);
+        
+    
+        var popup_1c1609c4e02b3cfd41314fde5770516c = L.popup({
+  "maxWidth": 210,
+});
+
+        
+            
+                var html_0143198b0d7e177782ee01cd75d3a9ca = $(`<div id="html_0143198b0d7e177782ee01cd75d3a9ca" style="width: 100.0%; height: 100.0%;"><div style="font-family:Arial;                                    min-width:170px;">                         <b>Parada 1 de 5</b><br>                         <b>Covirán El Sotanillo</b><br>                         <hr style="margin:4px 0;">                         🚚 Conductor FUR-TA-05<br>                         🕐 Salida: 06:00<br>                         ⚡ Recarga: NO                                              </div></div>`)[0];
+                popup_1c1609c4e02b3cfd41314fde5770516c.setContent(html_0143198b0d7e177782ee01cd75d3a9ca);
+            
+        
+
+        circle_marker_7ec663c4b481abb3e98ae9ba49ccc590.bindPopup(popup_1c1609c4e02b3cfd41314fde5770516c)
+        ;
+
+        
+    
+    
+            circle_marker_7ec663c4b481abb3e98ae9ba49ccc590.bindTooltip(
+                `<div>
+                     1. Covirán El Sotanillo — Conductor FUR-TA-05
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_97a1d40a25959f92fcb88255d2c1fc54 = L.circleMarker(
+                [36.8312, -2.6455],
+                {"bubblingMouseEvents": true, "color": "#A23B72", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#A23B72", "fillOpacity": 0.85, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 3}
+            ).addTo(feature_group_0a88024dbbd824c63cd8955a0346a41b);
+        
+    
+        var popup_34d7e7fe73d61d1b2132d6a1955db437 = L.popup({
+  "maxWidth": 210,
+});
+
+        
+            
+                var html_b8dd65b26327834eef0f157f09ec7b0c = $(`<div id="html_b8dd65b26327834eef0f157f09ec7b0c" style="width: 100.0%; height: 100.0%;"><div style="font-family:Arial;                                    min-width:170px;">                         <b>Parada 2 de 5</b><br>                         <b>Covirán Vícar Valencia</b><br>                         <hr style="margin:4px 0;">                         🚚 Conductor FUR-TA-05<br>                         🕐 Salida: 06:00<br>                         ⚡ Recarga: NO                                              </div></div>`)[0];
+                popup_34d7e7fe73d61d1b2132d6a1955db437.setContent(html_b8dd65b26327834eef0f157f09ec7b0c);
+            
+        
+
+        circle_marker_97a1d40a25959f92fcb88255d2c1fc54.bindPopup(popup_34d7e7fe73d61d1b2132d6a1955db437)
+        ;
+
+        
+    
+    
+            circle_marker_97a1d40a25959f92fcb88255d2c1fc54.bindTooltip(
+                `<div>
+                     2. Covirán Vícar Valencia — Conductor FUR-TA-05
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_2475dbaecb034df6c6008668a66976eb = L.circleMarker(
+                [36.8288, -2.6388],
+                {"bubblingMouseEvents": true, "color": "#A23B72", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#A23B72", "fillOpacity": 0.85, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 3}
+            ).addTo(feature_group_0a88024dbbd824c63cd8955a0346a41b);
+        
+    
+        var popup_20341efd8fe647c7563e0b48abd1755b = L.popup({
+  "maxWidth": 210,
+});
+
+        
+            
+                var html_1e76d070c476ea7f1d3377fd7c82628e = $(`<div id="html_1e76d070c476ea7f1d3377fd7c82628e" style="width: 100.0%; height: 100.0%;"><div style="font-family:Arial;                                    min-width:170px;">                         <b>Parada 3 de 5</b><br>                         <b>Covirán La Gangosa</b><br>                         <hr style="margin:4px 0;">                         🚚 Conductor FUR-TA-05<br>                         🕐 Salida: 06:00<br>                         ⚡ Recarga: NO                                              </div></div>`)[0];
+                popup_20341efd8fe647c7563e0b48abd1755b.setContent(html_1e76d070c476ea7f1d3377fd7c82628e);
+            
+        
+
+        circle_marker_2475dbaecb034df6c6008668a66976eb.bindPopup(popup_20341efd8fe647c7563e0b48abd1755b)
+        ;
+
+        
+    
+    
+            circle_marker_2475dbaecb034df6c6008668a66976eb.bindTooltip(
+                `<div>
+                     3. Covirán La Gangosa — Conductor FUR-TA-05
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_bf4c878e19116afbb346e8015b59a7d6 = L.circleMarker(
+                [36.8255, -2.6412],
+                {"bubblingMouseEvents": true, "color": "#A23B72", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#A23B72", "fillOpacity": 0.85, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 3}
+            ).addTo(feature_group_0a88024dbbd824c63cd8955a0346a41b);
+        
+    
+        var popup_fb8fd10f77d474c867ce1d7385091540 = L.popup({
+  "maxWidth": 210,
+});
+
+        
+            
+                var html_42a1b3c4c00f7ff8f406b32af075b61d = $(`<div id="html_42a1b3c4c00f7ff8f406b32af075b61d" style="width: 100.0%; height: 100.0%;"><div style="font-family:Arial;                                    min-width:170px;">                         <b>Parada 4 de 5</b><br>                         <b>Covirán Puebla Vícar</b><br>                         <hr style="margin:4px 0;">                         🚚 Conductor FUR-TA-05<br>                         🕐 Salida: 06:00<br>                         ⚡ Recarga: NO                                              </div></div>`)[0];
+                popup_fb8fd10f77d474c867ce1d7385091540.setContent(html_42a1b3c4c00f7ff8f406b32af075b61d);
+            
+        
+
+        circle_marker_bf4c878e19116afbb346e8015b59a7d6.bindPopup(popup_fb8fd10f77d474c867ce1d7385091540)
+        ;
+
+        
+    
+    
+            circle_marker_bf4c878e19116afbb346e8015b59a7d6.bindTooltip(
+                `<div>
+                     4. Covirán Puebla Vícar — Conductor FUR-TA-05
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_84cca17549d18a75346088f3248d2ddc = L.circleMarker(
+                [36.7612, -2.6155],
+                {"bubblingMouseEvents": true, "color": "#A23B72", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#A23B72", "fillOpacity": 0.85, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 3}
+            ).addTo(feature_group_0a88024dbbd824c63cd8955a0346a41b);
+        
+    
+        var popup_70c65bb1842b9cdf8f01c7445fcd1ced = L.popup({
+  "maxWidth": 210,
+});
+
+        
+            
+                var html_2446746e8094488ec0aba2cad952974a = $(`<div id="html_2446746e8094488ec0aba2cad952974a" style="width: 100.0%; height: 100.0%;"><div style="font-family:Arial;                                    min-width:170px;">                         <b>Parada 5 de 5</b><br>                         <b>Covirán Roquetas 45</b><br>                         <hr style="margin:4px 0;">                         🚚 Conductor FUR-TA-05<br>                         🕐 Salida: 06:00<br>                         ⚡ Recarga: NO                                              </div></div>`)[0];
+                popup_70c65bb1842b9cdf8f01c7445fcd1ced.setContent(html_2446746e8094488ec0aba2cad952974a);
+            
+        
+
+        circle_marker_84cca17549d18a75346088f3248d2ddc.bindPopup(popup_70c65bb1842b9cdf8f01c7445fcd1ced)
+        ;
+
+        
+    
+    
+            circle_marker_84cca17549d18a75346088f3248d2ddc.bindTooltip(
+                `<div>
+                     5. Covirán Roquetas 45 — Conductor FUR-TA-05
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var poly_line_812797b1d8f4a4cee71ff9ecf6a07d17 = L.polyline(
+                [[36.7755, -2.8112], [36.8355, -2.6512], [36.8312, -2.6455], [36.8288, -2.6388], [36.8255, -2.6412], [36.7612, -2.6155], [36.7755, -2.8112]],
+                {"bubblingMouseEvents": true, "color": "#A23B72", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "#A23B72", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.7, "smoothFactor": 1.0, "stroke": true, "weight": 2}
+            ).addTo(feature_group_0a88024dbbd824c63cd8955a0346a41b);
+        
+    
+            poly_line_812797b1d8f4a4cee71ff9ecf6a07d17.bindTooltip(
+                `<div>
+                     Conductor FUR-TA-05 | 5 tiendas | 54.0 km | Coste: 9.72 €
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            feature_group_0a88024dbbd824c63cd8955a0346a41b.addTo(map_98ce2bb500bb88131bba6f8ee93befbd);
+        
+    
+            var feature_group_fa2164cba67b1febe59f027f18daa296 = L.featureGroup(
+                {
+}
+            );
+        
+    
+            var circle_marker_1d9e1c76b7117d5b9ff206dd13bd060d = L.circleMarker(
+                [36.7855, -2.6312],
+                {"bubblingMouseEvents": true, "color": "#3B1F2B", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3B1F2B", "fillOpacity": 0.85, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 3}
+            ).addTo(feature_group_fa2164cba67b1febe59f027f18daa296);
+        
+    
+        var popup_4592de79d36f671e84d8c8dc36d881d9 = L.popup({
+  "maxWidth": 210,
+});
+
+        
+            
+                var html_74807840742625a9a5cc7bd544ebb189 = $(`<div id="html_74807840742625a9a5cc7bd544ebb189" style="width: 100.0%; height: 100.0%;"><div style="font-family:Arial;                                    min-width:170px;">                         <b>Parada 1 de 4</b><br>                         <b>Covirán Roquetas Mojon.</b><br>                         <hr style="margin:4px 0;">                         🚚 Conductor FUR-TA-06<br>                         🕐 Salida: 06:00<br>                         ⚡ Recarga: NO                                              </div></div>`)[0];
+                popup_4592de79d36f671e84d8c8dc36d881d9.setContent(html_74807840742625a9a5cc7bd544ebb189);
+            
+        
+
+        circle_marker_1d9e1c76b7117d5b9ff206dd13bd060d.bindPopup(popup_4592de79d36f671e84d8c8dc36d881d9)
+        ;
+
+        
+    
+    
+            circle_marker_1d9e1c76b7117d5b9ff206dd13bd060d.bindTooltip(
+                `<div>
+                     1. Covirán Roquetas Mojon. — Conductor FUR-TA-06
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_371d7bcf9a30245ede273a7bbff56db1 = L.circleMarker(
+                [36.7712, -2.6088],
+                {"bubblingMouseEvents": true, "color": "#3B1F2B", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3B1F2B", "fillOpacity": 0.85, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 3}
+            ).addTo(feature_group_fa2164cba67b1febe59f027f18daa296);
+        
+    
+        var popup_aefa90915c96af34befde360687f2ea7 = L.popup({
+  "maxWidth": 210,
+});
+
+        
+            
+                var html_87b0383580490e45c76b0bc4124fbaef = $(`<div id="html_87b0383580490e45c76b0bc4124fbaef" style="width: 100.0%; height: 100.0%;"><div style="font-family:Arial;                                    min-width:170px;">                         <b>Parada 2 de 4</b><br>                         <b>Covirán Roquetas Hoyo</b><br>                         <hr style="margin:4px 0;">                         🚚 Conductor FUR-TA-06<br>                         🕐 Salida: 06:00<br>                         ⚡ Recarga: NO                                              </div></div>`)[0];
+                popup_aefa90915c96af34befde360687f2ea7.setContent(html_87b0383580490e45c76b0bc4124fbaef);
+            
+        
+
+        circle_marker_371d7bcf9a30245ede273a7bbff56db1.bindPopup(popup_aefa90915c96af34befde360687f2ea7)
+        ;
+
+        
+    
+    
+            circle_marker_371d7bcf9a30245ede273a7bbff56db1.bindTooltip(
+                `<div>
+                     2. Covirán Roquetas Hoyo — Conductor FUR-TA-06
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_fb8581d751c9f02f6a15a6ef3740486c = L.circleMarker(
+                [36.7722, -2.6055],
+                {"bubblingMouseEvents": true, "color": "#3B1F2B", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3B1F2B", "fillOpacity": 0.85, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 3}
+            ).addTo(feature_group_fa2164cba67b1febe59f027f18daa296);
+        
+    
+        var popup_06194aeb0064f419196920adb0a0bbeb = L.popup({
+  "maxWidth": 210,
+});
+
+        
+            
+                var html_068d3126ccb7a6257133fb226a1a20cb = $(`<div id="html_068d3126ccb7a6257133fb226a1a20cb" style="width: 100.0%; height: 100.0%;"><div style="font-family:Arial;                                    min-width:170px;">                         <b>Parada 3 de 4</b><br>                         <b>Covirán Roquetas Reino</b><br>                         <hr style="margin:4px 0;">                         🚚 Conductor FUR-TA-06<br>                         🕐 Salida: 06:00<br>                         ⚡ Recarga: NO                                              </div></div>`)[0];
+                popup_06194aeb0064f419196920adb0a0bbeb.setContent(html_068d3126ccb7a6257133fb226a1a20cb);
+            
+        
+
+        circle_marker_fb8581d751c9f02f6a15a6ef3740486c.bindPopup(popup_06194aeb0064f419196920adb0a0bbeb)
+        ;
+
+        
+    
+    
+            circle_marker_fb8581d751c9f02f6a15a6ef3740486c.bindTooltip(
+                `<div>
+                     3. Covirán Roquetas Reino — Conductor FUR-TA-06
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_2c07cbe9855ad6ae73bba14f79329f52 = L.circleMarker(
+                [36.9755, -2.9612],
+                {"bubblingMouseEvents": true, "color": "#3B1F2B", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3B1F2B", "fillOpacity": 0.85, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 3}
+            ).addTo(feature_group_fa2164cba67b1febe59f027f18daa296);
+        
+    
+        var popup_d67749fe3b63a82c22a561452478feef = L.popup({
+  "maxWidth": 210,
+});
+
+        
+            
+                var html_5a5632aa29a11bfd6386a358105fbfa7 = $(`<div id="html_5a5632aa29a11bfd6386a358105fbfa7" style="width: 100.0%; height: 100.0%;"><div style="font-family:Arial;                                    min-width:170px;">                         <b>Parada 4 de 4</b><br>                         <b>Covirán Alcolea</b><br>                         <hr style="margin:4px 0;">                         🚚 Conductor FUR-TA-06<br>                         🕐 Salida: 06:00<br>                         ⚡ Recarga: NO                                              </div></div>`)[0];
+                popup_d67749fe3b63a82c22a561452478feef.setContent(html_5a5632aa29a11bfd6386a358105fbfa7);
+            
+        
+
+        circle_marker_2c07cbe9855ad6ae73bba14f79329f52.bindPopup(popup_d67749fe3b63a82c22a561452478feef)
+        ;
+
+        
+    
+    
+            circle_marker_2c07cbe9855ad6ae73bba14f79329f52.bindTooltip(
+                `<div>
+                     4. Covirán Alcolea — Conductor FUR-TA-06
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var poly_line_f7b446e677654eda8759e090c5a04d7a = L.polyline(
+                [[36.7755, -2.8112], [36.7855, -2.6312], [36.7712, -2.6088], [36.7722, -2.6055], [36.9755, -2.9612], [36.7755, -2.8112]],
+                {"bubblingMouseEvents": true, "color": "#3B1F2B", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "#3B1F2B", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.7, "smoothFactor": 1.0, "stroke": true, "weight": 2}
+            ).addTo(feature_group_fa2164cba67b1febe59f027f18daa296);
+        
+    
+            poly_line_f7b446e677654eda8759e090c5a04d7a.bindTooltip(
+                `<div>
+                     Conductor FUR-TA-06 | 4 tiendas | 106.37 km | Coste: 19.15 €
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            feature_group_fa2164cba67b1febe59f027f18daa296.addTo(map_98ce2bb500bb88131bba6f8ee93befbd);
+        
+    
+            var feature_group_10e947d537833c16c8457aa7c1df14da = L.featureGroup(
+                {
+}
+            );
+        
+    
+            var circle_marker_d68f3ea6a4257b4bf7aa1008b5f6af06 = L.circleMarker(
+                [36.7622, -2.6122],
+                {"bubblingMouseEvents": true, "color": "#E94F37", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#E94F37", "fillOpacity": 0.85, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 3}
+            ).addTo(feature_group_10e947d537833c16c8457aa7c1df14da);
+        
+    
+        var popup_11c191e67f8dc3d87cc69903a6059081 = L.popup({
+  "maxWidth": 210,
+});
+
+        
+            
+                var html_a323edada3ccb635440bd46c1888a725 = $(`<div id="html_a323edada3ccb635440bd46c1888a725" style="width: 100.0%; height: 100.0%;"><div style="font-family:Arial;                                    min-width:170px;">                         <b>Parada 1 de 5</b><br>                         <b>Covirán Roquetas Molina</b><br>                         <hr style="margin:4px 0;">                         🚚 Conductor FUR-TA-07<br>                         🕐 Salida: 06:00<br>                         ⚡ Recarga: NO                                              </div></div>`)[0];
+                popup_11c191e67f8dc3d87cc69903a6059081.setContent(html_a323edada3ccb635440bd46c1888a725);
+            
+        
+
+        circle_marker_d68f3ea6a4257b4bf7aa1008b5f6af06.bindPopup(popup_11c191e67f8dc3d87cc69903a6059081)
+        ;
+
+        
+    
+    
+            circle_marker_d68f3ea6a4257b4bf7aa1008b5f6af06.bindTooltip(
+                `<div>
+                     1. Covirán Roquetas Molina — Conductor FUR-TA-07
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_05b0dd50c512a242a53236c3d64872aa = L.circleMarker(
+                [36.7655, -2.6112],
+                {"bubblingMouseEvents": true, "color": "#E94F37", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#E94F37", "fillOpacity": 0.85, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 3}
+            ).addTo(feature_group_10e947d537833c16c8457aa7c1df14da);
+        
+    
+        var popup_66e6a96f9634543487cffc2326b1b2f1 = L.popup({
+  "maxWidth": 210,
+});
+
+        
+            
+                var html_2001b9264af0061b11b9321ddaefe3e1 = $(`<div id="html_2001b9264af0061b11b9321ddaefe3e1" style="width: 100.0%; height: 100.0%;"><div style="font-family:Arial;                                    min-width:170px;">                         <b>Parada 2 de 5</b><br>                         <b>Covirán Roquetas Oviedo</b><br>                         <hr style="margin:4px 0;">                         🚚 Conductor FUR-TA-07<br>                         🕐 Salida: 06:00<br>                         ⚡ Recarga: NO                                              </div></div>`)[0];
+                popup_66e6a96f9634543487cffc2326b1b2f1.setContent(html_2001b9264af0061b11b9321ddaefe3e1);
+            
+        
+
+        circle_marker_05b0dd50c512a242a53236c3d64872aa.bindPopup(popup_66e6a96f9634543487cffc2326b1b2f1)
+        ;
+
+        
+    
+    
+            circle_marker_05b0dd50c512a242a53236c3d64872aa.bindTooltip(
+                `<div>
+                     2. Covirán Roquetas Oviedo — Conductor FUR-TA-07
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_855b965b518715a02867b86198940215 = L.circleMarker(
+                [36.7788, -2.6012],
+                {"bubblingMouseEvents": true, "color": "#E94F37", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#E94F37", "fillOpacity": 0.85, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 3}
+            ).addTo(feature_group_10e947d537833c16c8457aa7c1df14da);
+        
+    
+        var popup_158433c13fdb7215dae681c35aae9cd7 = L.popup({
+  "maxWidth": 210,
+});
+
+        
+            
+                var html_1d322670bc6e136a672a7515d7d9c6f4 = $(`<div id="html_1d322670bc6e136a672a7515d7d9c6f4" style="width: 100.0%; height: 100.0%;"><div style="font-family:Arial;                                    min-width:170px;">                         <b>Parada 3 de 5</b><br>                         <b>Covirán Roquetas 287</b><br>                         <hr style="margin:4px 0;">                         🚚 Conductor FUR-TA-07<br>                         🕐 Salida: 06:00<br>                         ⚡ Recarga: NO                                              </div></div>`)[0];
+                popup_158433c13fdb7215dae681c35aae9cd7.setContent(html_1d322670bc6e136a672a7515d7d9c6f4);
+            
+        
+
+        circle_marker_855b965b518715a02867b86198940215.bindPopup(popup_158433c13fdb7215dae681c35aae9cd7)
+        ;
+
+        
+    
+    
+            circle_marker_855b965b518715a02867b86198940215.bindTooltip(
+                `<div>
+                     3. Covirán Roquetas 287 — Conductor FUR-TA-07
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_75b89e3a1010d1137d2f95d5d1c183d0 = L.circleMarker(
+                [36.8155, -2.5712],
+                {"bubblingMouseEvents": true, "color": "#E94F37", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#E94F37", "fillOpacity": 0.85, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 3}
+            ).addTo(feature_group_10e947d537833c16c8457aa7c1df14da);
+        
+    
+        var popup_9f1f14c7146e8fbafd815c9c24b42ce0 = L.popup({
+  "maxWidth": 210,
+});
+
+        
+            
+                var html_7a94bde06150602d974e71622d0a956b = $(`<div id="html_7a94bde06150602d974e71622d0a956b" style="width: 100.0%; height: 100.0%;"><div style="font-family:Arial;                                    min-width:170px;">                         <b>Parada 4 de 5</b><br>                         <b>Covirán Aguadulce</b><br>                         <hr style="margin:4px 0;">                         🚚 Conductor FUR-TA-07<br>                         🕐 Salida: 06:00<br>                         ⚡ Recarga: NO                                              </div></div>`)[0];
+                popup_9f1f14c7146e8fbafd815c9c24b42ce0.setContent(html_7a94bde06150602d974e71622d0a956b);
+            
+        
+
+        circle_marker_75b89e3a1010d1137d2f95d5d1c183d0.bindPopup(popup_9f1f14c7146e8fbafd815c9c24b42ce0)
+        ;
+
+        
+    
+    
+            circle_marker_75b89e3a1010d1137d2f95d5d1c183d0.bindTooltip(
+                `<div>
+                     4. Covirán Aguadulce — Conductor FUR-TA-07
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_0b82bfb5461ec6c6eda77770f806629e = L.circleMarker(
+                [37.0122, -2.7412],
+                {"bubblingMouseEvents": true, "color": "#E94F37", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#E94F37", "fillOpacity": 0.85, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 3}
+            ).addTo(feature_group_10e947d537833c16c8457aa7c1df14da);
+        
+    
+        var popup_617151fcf4588981d974dbd2cd7786ff = L.popup({
+  "maxWidth": 210,
+});
+
+        
+            
+                var html_478eacd5af761ce18db41d750c369c10 = $(`<div id="html_478eacd5af761ce18db41d750c369c10" style="width: 100.0%; height: 100.0%;"><div style="font-family:Arial;                                    min-width:170px;">                         <b>Parada 5 de 5</b><br>                         <b>Covirán Canjáyar</b><br>                         <hr style="margin:4px 0;">                         🚚 Conductor FUR-TA-07<br>                         🕐 Salida: 06:00<br>                         ⚡ Recarga: NO                                              </div></div>`)[0];
+                popup_617151fcf4588981d974dbd2cd7786ff.setContent(html_478eacd5af761ce18db41d750c369c10);
+            
+        
+
+        circle_marker_0b82bfb5461ec6c6eda77770f806629e.bindPopup(popup_617151fcf4588981d974dbd2cd7786ff)
+        ;
+
+        
+    
+    
+            circle_marker_0b82bfb5461ec6c6eda77770f806629e.bindTooltip(
+                `<div>
+                     5. Covirán Canjáyar — Conductor FUR-TA-07
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var poly_line_48b5a4690a3306efa6aada3232bdff4c = L.polyline(
+                [[36.7755, -2.8112], [36.7622, -2.6122], [36.7655, -2.6112], [36.7788, -2.6012], [36.8155, -2.5712], [37.0122, -2.7412], [36.7755, -2.8112]],
+                {"bubblingMouseEvents": true, "color": "#E94F37", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "#E94F37", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.7, "smoothFactor": 1.0, "stroke": true, "weight": 2}
+            ).addTo(feature_group_10e947d537833c16c8457aa7c1df14da);
+        
+    
+            poly_line_48b5a4690a3306efa6aada3232bdff4c.bindTooltip(
+                `<div>
+                     Conductor FUR-TA-07 | 5 tiendas | 99.57 km | Coste: 17.92 €
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            feature_group_10e947d537833c16c8457aa7c1df14da.addTo(map_98ce2bb500bb88131bba6f8ee93befbd);
+        
+    
+            var feature_group_e1d3e01997036f249d90c53fab4acbda = L.featureGroup(
+                {
+}
+            );
+        
+    
+            var circle_marker_9b995e7bd354f81cb283ca6d52c29a2b = L.circleMarker(
+                [36.7512, -3.0155],
+                {"bubblingMouseEvents": true, "color": "#393E41", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#393E41", "fillOpacity": 0.85, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 3}
+            ).addTo(feature_group_e1d3e01997036f249d90c53fab4acbda);
+        
+    
+        var popup_3e4832818c62827289529aec3ce47639 = L.popup({
+  "maxWidth": 210,
+});
+
+        
+            
+                var html_4bc33d52c956ea29471468c7345ea242 = $(`<div id="html_4bc33d52c956ea29471468c7345ea242" style="width: 100.0%; height: 100.0%;"><div style="font-family:Arial;                                    min-width:170px;">                         <b>Parada 1 de 4</b><br>                         <b>Covirán Adra Curva</b><br>                         <hr style="margin:4px 0;">                         🚚 Conductor FUR-TA-08<br>                         🕐 Salida: 06:00<br>                         ⚡ Recarga: NO                                              </div></div>`)[0];
+                popup_3e4832818c62827289529aec3ce47639.setContent(html_4bc33d52c956ea29471468c7345ea242);
+            
+        
+
+        circle_marker_9b995e7bd354f81cb283ca6d52c29a2b.bindPopup(popup_3e4832818c62827289529aec3ce47639)
+        ;
+
+        
+    
+    
+            circle_marker_9b995e7bd354f81cb283ca6d52c29a2b.bindTooltip(
+                `<div>
+                     1. Covirán Adra Curva — Conductor FUR-TA-08
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_6094a7f0a5623d24853ef53d0b48f38e = L.circleMarker(
+                [36.7488, -3.0255],
+                {"bubblingMouseEvents": true, "color": "#393E41", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#393E41", "fillOpacity": 0.85, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 3}
+            ).addTo(feature_group_e1d3e01997036f249d90c53fab4acbda);
+        
+    
+        var popup_f8b555c9474d6d86680bcac60187e44e = L.popup({
+  "maxWidth": 210,
+});
+
+        
+            
+                var html_1d7d0fc94a4692b3c394c69b1ac24c14 = $(`<div id="html_1d7d0fc94a4692b3c394c69b1ac24c14" style="width: 100.0%; height: 100.0%;"><div style="font-family:Arial;                                    min-width:170px;">                         <b>Parada 2 de 4</b><br>                         <b>Covirán Puente del Río</b><br>                         <hr style="margin:4px 0;">                         🚚 Conductor FUR-TA-08<br>                         🕐 Salida: 06:00<br>                         ⚡ Recarga: NO                                              </div></div>`)[0];
+                popup_f8b555c9474d6d86680bcac60187e44e.setContent(html_1d7d0fc94a4692b3c394c69b1ac24c14);
+            
+        
+
+        circle_marker_6094a7f0a5623d24853ef53d0b48f38e.bindPopup(popup_f8b555c9474d6d86680bcac60187e44e)
+        ;
+
+        
+    
+    
+            circle_marker_6094a7f0a5623d24853ef53d0b48f38e.bindTooltip(
+                `<div>
+                     2. Covirán Puente del Río — Conductor FUR-TA-08
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_73c38eecfb470d6965bd1d60bea0369b = L.circleMarker(
+                [36.9455, -3.1788],
+                {"bubblingMouseEvents": true, "color": "#393E41", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#393E41", "fillOpacity": 0.85, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 3}
+            ).addTo(feature_group_e1d3e01997036f249d90c53fab4acbda);
+        
+    
+        var popup_e4fcdccd202e3b74eb4c3608019f611e = L.popup({
+  "maxWidth": 210,
+});
+
+        
+            
+                var html_160b088585854898cb7fcd199a9cedbd = $(`<div id="html_160b088585854898cb7fcd199a9cedbd" style="width: 100.0%; height: 100.0%;"><div style="font-family:Arial;                                    min-width:170px;">                         <b>Parada 3 de 4</b><br>                         <b>Covirán Cádiar</b><br>                         <hr style="margin:4px 0;">                         🚚 Conductor FUR-TA-08<br>                         🕐 Salida: 06:00<br>                         ⚡ Recarga: NO                                              </div></div>`)[0];
+                popup_e4fcdccd202e3b74eb4c3608019f611e.setContent(html_160b088585854898cb7fcd199a9cedbd);
+            
+        
+
+        circle_marker_73c38eecfb470d6965bd1d60bea0369b.bindPopup(popup_e4fcdccd202e3b74eb4c3608019f611e)
+        ;
+
+        
+    
+    
+            circle_marker_73c38eecfb470d6965bd1d60bea0369b.bindTooltip(
+                `<div>
+                     3. Covirán Cádiar — Conductor FUR-TA-08
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_e7d2ec0e0c03962ea2f82f932eb2ecbb = L.circleMarker(
+                [36.9755, -3.1912],
+                {"bubblingMouseEvents": true, "color": "#393E41", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#393E41", "fillOpacity": 0.85, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 3}
+            ).addTo(feature_group_e1d3e01997036f249d90c53fab4acbda);
+        
+    
+        var popup_467419973fdd0c964749522bf776152b = L.popup({
+  "maxWidth": 210,
+});
+
+        
+            
+                var html_92e864429e7fde4781b85d8b2de303db = $(`<div id="html_92e864429e7fde4781b85d8b2de303db" style="width: 100.0%; height: 100.0%;"><div style="font-family:Arial;                                    min-width:170px;">                         <b>Parada 4 de 4</b><br>                         <b>Covirán Bérchules</b><br>                         <hr style="margin:4px 0;">                         🚚 Conductor FUR-TA-08<br>                         🕐 Salida: 06:00<br>                         ⚡ Recarga: NO                                              </div></div>`)[0];
+                popup_467419973fdd0c964749522bf776152b.setContent(html_92e864429e7fde4781b85d8b2de303db);
+            
+        
+
+        circle_marker_e7d2ec0e0c03962ea2f82f932eb2ecbb.bindPopup(popup_467419973fdd0c964749522bf776152b)
+        ;
+
+        
+    
+    
+            circle_marker_e7d2ec0e0c03962ea2f82f932eb2ecbb.bindTooltip(
+                `<div>
+                     4. Covirán Bérchules — Conductor FUR-TA-08
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var poly_line_f23a098d617203875f9360623668582d = L.polyline(
+                [[36.7755, -2.8112], [36.7512, -3.0155], [36.7488, -3.0255], [36.9455, -3.1788], [36.9755, -3.1912], [36.7755, -2.8112]],
+                {"bubblingMouseEvents": true, "color": "#393E41", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "#393E41", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.7, "smoothFactor": 1.0, "stroke": true, "weight": 2}
+            ).addTo(feature_group_e1d3e01997036f249d90c53fab4acbda);
+        
+    
+            poly_line_f23a098d617203875f9360623668582d.bindTooltip(
+                `<div>
+                     Conductor FUR-TA-08 | 4 tiendas | 113.13 km | Coste: 20.36 €
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            feature_group_e1d3e01997036f249d90c53fab4acbda.addTo(map_98ce2bb500bb88131bba6f8ee93befbd);
+        
+    
+            var feature_group_aecd954baae572ae1b2a13456587bfe5 = L.featureGroup(
+                {
+}
+            );
+        
+    
+            var circle_marker_f4cf3739c76f9e239943057478edbec2 = L.circleMarker(
+                [36.9555, -2.5712],
+                {"bubblingMouseEvents": true, "color": "#84C5F4", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#84C5F4", "fillOpacity": 0.85, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 3}
+            ).addTo(feature_group_aecd954baae572ae1b2a13456587bfe5);
+        
+    
+        var popup_64044685ddf23bcb04baa90ad9c5a090 = L.popup({
+  "maxWidth": 210,
+});
+
+        
+            
+                var html_521f95a528a0a7f3723b663588598dad = $(`<div id="html_521f95a528a0a7f3723b663588598dad" style="width: 100.0%; height: 100.0%;"><div style="font-family:Arial;                                    min-width:170px;">                         <b>Parada 1 de 5</b><br>                         <b>Covirán Alhama Almería</b><br>                         <hr style="margin:4px 0;">                         🚚 Conductor FUR-TA-09<br>                         🕐 Salida: 06:00<br>                         ⚡ Recarga: NO                                              </div></div>`)[0];
+                popup_64044685ddf23bcb04baa90ad9c5a090.setContent(html_521f95a528a0a7f3723b663588598dad);
+            
+        
+
+        circle_marker_f4cf3739c76f9e239943057478edbec2.bindPopup(popup_64044685ddf23bcb04baa90ad9c5a090)
+        ;
+
+        
+    
+    
+            circle_marker_f4cf3739c76f9e239943057478edbec2.bindTooltip(
+                `<div>
+                     1. Covirán Alhama Almería — Conductor FUR-TA-09
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_f472becde57b301998dd621d67b2359f = L.circleMarker(
+                [36.9512, -2.4888],
+                {"bubblingMouseEvents": true, "color": "#84C5F4", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#84C5F4", "fillOpacity": 0.85, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 3}
+            ).addTo(feature_group_aecd954baae572ae1b2a13456587bfe5);
+        
+    
+        var popup_ccbc36a219f1f3f9c437eae156abbe6f = L.popup({
+  "maxWidth": 210,
+});
+
+        
+            
+                var html_1224b3ab7970e8915e6ac792ab046ee0 = $(`<div id="html_1224b3ab7970e8915e6ac792ab046ee0" style="width: 100.0%; height: 100.0%;"><div style="font-family:Arial;                                    min-width:170px;">                         <b>Parada 2 de 5</b><br>                         <b>Covirán Gádor</b><br>                         <hr style="margin:4px 0;">                         🚚 Conductor FUR-TA-09<br>                         🕐 Salida: 06:00<br>                         ⚡ Recarga: NO                                              </div></div>`)[0];
+                popup_ccbc36a219f1f3f9c437eae156abbe6f.setContent(html_1224b3ab7970e8915e6ac792ab046ee0);
+            
+        
+
+        circle_marker_f472becde57b301998dd621d67b2359f.bindPopup(popup_ccbc36a219f1f3f9c437eae156abbe6f)
+        ;
+
+        
+    
+    
+            circle_marker_f472becde57b301998dd621d67b2359f.bindTooltip(
+                `<div>
+                     2. Covirán Gádor — Conductor FUR-TA-09
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_0f0521ea0d1441bebfa1577faad3e289 = L.circleMarker(
+                [36.9212, -2.4588],
+                {"bubblingMouseEvents": true, "color": "#84C5F4", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#84C5F4", "fillOpacity": 0.85, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 3}
+            ).addTo(feature_group_aecd954baae572ae1b2a13456587bfe5);
+        
+    
+        var popup_11ad27ff8a403e236bdefa63bb2db0e4 = L.popup({
+  "maxWidth": 210,
+});
+
+        
+            
+                var html_2f37a49916a881a566464ad74b60d110 = $(`<div id="html_2f37a49916a881a566464ad74b60d110" style="width: 100.0%; height: 100.0%;"><div style="font-family:Arial;                                    min-width:170px;">                         <b>Parada 3 de 5</b><br>                         <b>Covirán Benahadux</b><br>                         <hr style="margin:4px 0;">                         🚚 Conductor FUR-TA-09<br>                         🕐 Salida: 06:00<br>                         ⚡ Recarga: NO                                              </div></div>`)[0];
+                popup_11ad27ff8a403e236bdefa63bb2db0e4.setContent(html_2f37a49916a881a566464ad74b60d110);
+            
+        
+
+        circle_marker_0f0521ea0d1441bebfa1577faad3e289.bindPopup(popup_11ad27ff8a403e236bdefa63bb2db0e4)
+        ;
+
+        
+    
+    
+            circle_marker_0f0521ea0d1441bebfa1577faad3e289.bindTooltip(
+                `<div>
+                     3. Covirán Benahadux — Conductor FUR-TA-09
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_6f098c658cb8ab967917a4f88c48172a = L.circleMarker(
+                [36.8712, -2.4388],
+                {"bubblingMouseEvents": true, "color": "#84C5F4", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#84C5F4", "fillOpacity": 0.85, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 3}
+            ).addTo(feature_group_aecd954baae572ae1b2a13456587bfe5);
+        
+    
+        var popup_92196de430d6cfda8f6e220744f91a7b = L.popup({
+  "maxWidth": 210,
+});
+
+        
+            
+                var html_e31fc9c0800bb17a1c17e8d9ad9bce74 = $(`<div id="html_e31fc9c0800bb17a1c17e8d9ad9bce74" style="width: 100.0%; height: 100.0%;"><div style="font-family:Arial;                                    min-width:170px;">                         <b>Parada 4 de 5</b><br>                         <b>Covirán Huércal</b><br>                         <hr style="margin:4px 0;">                         🚚 Conductor FUR-TA-09<br>                         🕐 Salida: 06:00<br>                         ⚡ Recarga: NO                                              </div></div>`)[0];
+                popup_92196de430d6cfda8f6e220744f91a7b.setContent(html_e31fc9c0800bb17a1c17e8d9ad9bce74);
+            
+        
+
+        circle_marker_6f098c658cb8ab967917a4f88c48172a.bindPopup(popup_92196de430d6cfda8f6e220744f91a7b)
+        ;
+
+        
+    
+    
+            circle_marker_6f098c658cb8ab967917a4f88c48172a.bindTooltip(
+                `<div>
+                     4. Covirán Huércal — Conductor FUR-TA-09
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_e74fc56ebec07eab46ceb37827382485 = L.circleMarker(
+                [36.8388, -2.4688],
+                {"bubblingMouseEvents": true, "color": "#84C5F4", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#84C5F4", "fillOpacity": 0.85, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 3}
+            ).addTo(feature_group_aecd954baae572ae1b2a13456587bfe5);
+        
+    
+        var popup_b5bf1896ecd7fe317025e00e9d68355e = L.popup({
+  "maxWidth": 210,
+});
+
+        
+            
+                var html_c526af5ec7be0aa018dfbeff29c7892c = $(`<div id="html_c526af5ec7be0aa018dfbeff29c7892c" style="width: 100.0%; height: 100.0%;"><div style="font-family:Arial;                                    min-width:170px;">                         <b>Parada 5 de 5</b><br>                         <b>Covirán Av. del Mar</b><br>                         <hr style="margin:4px 0;">                         🚚 Conductor FUR-TA-09<br>                         🕐 Salida: 06:00<br>                         ⚡ Recarga: NO                                              </div></div>`)[0];
+                popup_b5bf1896ecd7fe317025e00e9d68355e.setContent(html_c526af5ec7be0aa018dfbeff29c7892c);
+            
+        
+
+        circle_marker_e74fc56ebec07eab46ceb37827382485.bindPopup(popup_b5bf1896ecd7fe317025e00e9d68355e)
+        ;
+
+        
+    
+    
+            circle_marker_e74fc56ebec07eab46ceb37827382485.bindTooltip(
+                `<div>
+                     5. Covirán Av. del Mar — Conductor FUR-TA-09
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var poly_line_81dc0835b57820965d55762ebee02455 = L.polyline(
+                [[36.7755, -2.8112], [36.9555, -2.5712], [36.9512, -2.4888], [36.9212, -2.4588], [36.8712, -2.4388], [36.8388, -2.4688], [36.7755, -2.8112]],
+                {"bubblingMouseEvents": true, "color": "#84C5F4", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "#84C5F4", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.7, "smoothFactor": 1.0, "stroke": true, "weight": 2}
+            ).addTo(feature_group_aecd954baae572ae1b2a13456587bfe5);
+        
+    
+            poly_line_81dc0835b57820965d55762ebee02455.bindTooltip(
+                `<div>
+                     Conductor FUR-TA-09 | 5 tiendas | 104.75 km | Coste: 18.85 €
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            feature_group_aecd954baae572ae1b2a13456587bfe5.addTo(map_98ce2bb500bb88131bba6f8ee93befbd);
+        
+    
+            var feature_group_9ed2bb44834cedd0833c8df608f41dc0 = L.featureGroup(
+                {
+}
+            );
+        
+    
+            var circle_marker_d91a40cde37614f29cc01bab8ff69a9f = L.circleMarker(
+                [36.8522, -2.4455],
+                {"bubblingMouseEvents": true, "color": "#6B4226", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#6B4226", "fillOpacity": 0.85, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 3}
+            ).addTo(feature_group_9ed2bb44834cedd0833c8df608f41dc0);
+        
+    
+        var popup_b8a6b204867f9f133efad4a16fa5a594 = L.popup({
+  "maxWidth": 210,
+});
+
+        
+            
+                var html_8bbea088ecd6301e9ae43b860600c4ca = $(`<div id="html_8bbea088ecd6301e9ae43b860600c4ca" style="width: 100.0%; height: 100.0%;"><div style="font-family:Arial;                                    min-width:170px;">                         <b>Parada 1 de 5</b><br>                         <b>Covirán Largo Caballero</b><br>                         <hr style="margin:4px 0;">                         🚚 Conductor FUR-TA-10<br>                         🕐 Salida: 06:00<br>                         ⚡ Recarga: SÍ                         <br>🔌 bp Mare Nostrum (Av. Mare Nostrum)                     </div></div>`)[0];
+                popup_b8a6b204867f9f133efad4a16fa5a594.setContent(html_8bbea088ecd6301e9ae43b860600c4ca);
+            
+        
+
+        circle_marker_d91a40cde37614f29cc01bab8ff69a9f.bindPopup(popup_b8a6b204867f9f133efad4a16fa5a594)
+        ;
+
+        
+    
+    
+            circle_marker_d91a40cde37614f29cc01bab8ff69a9f.bindTooltip(
+                `<div>
+                     1. Covirán Largo Caballero — Conductor FUR-TA-10
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_fff7b3c2aceb22ef9facf77fbc12e37c = L.circleMarker(
+                [36.8455, -2.3588],
+                {"bubblingMouseEvents": true, "color": "#6B4226", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#6B4226", "fillOpacity": 0.85, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 3}
+            ).addTo(feature_group_9ed2bb44834cedd0833c8df608f41dc0);
+        
+    
+        var popup_7763c4cdd20fd50a2998c07b7e84dd82 = L.popup({
+  "maxWidth": 210,
+});
+
+        
+            
+                var html_bfc472b404b2c1ccd2443e2c4d9ab030 = $(`<div id="html_bfc472b404b2c1ccd2443e2c4d9ab030" style="width: 100.0%; height: 100.0%;"><div style="font-family:Arial;                                    min-width:170px;">                         <b>Parada 2 de 5</b><br>                         <b>Covirán El Alquián</b><br>                         <hr style="margin:4px 0;">                         🚚 Conductor FUR-TA-10<br>                         🕐 Salida: 06:00<br>                         ⚡ Recarga: SÍ                         <br>🔌 bp Mare Nostrum (Av. Mare Nostrum)                     </div></div>`)[0];
+                popup_7763c4cdd20fd50a2998c07b7e84dd82.setContent(html_bfc472b404b2c1ccd2443e2c4d9ab030);
+            
+        
+
+        circle_marker_fff7b3c2aceb22ef9facf77fbc12e37c.bindPopup(popup_7763c4cdd20fd50a2998c07b7e84dd82)
+        ;
+
+        
+    
+    
+            circle_marker_fff7b3c2aceb22ef9facf77fbc12e37c.bindTooltip(
+                `<div>
+                     2. Covirán El Alquián — Conductor FUR-TA-10
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_e957b233793e39416afc64a3fd8bad04 = L.circleMarker(
+                [36.7812, -2.2455],
+                {"bubblingMouseEvents": true, "color": "#6B4226", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#6B4226", "fillOpacity": 0.85, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 3}
+            ).addTo(feature_group_9ed2bb44834cedd0833c8df608f41dc0);
+        
+    
+        var popup_fd14a9d5848d373257c7163904f12cff = L.popup({
+  "maxWidth": 210,
+});
+
+        
+            
+                var html_c15771a4d983f6a9d4b7551cba804bd4 = $(`<div id="html_c15771a4d983f6a9d4b7551cba804bd4" style="width: 100.0%; height: 100.0%;"><div style="font-family:Arial;                                    min-width:170px;">                         <b>Parada 3 de 5</b><br>                         <b>Covirán Cabo Gata</b><br>                         <hr style="margin:4px 0;">                         🚚 Conductor FUR-TA-10<br>                         🕐 Salida: 06:00<br>                         ⚡ Recarga: SÍ                         <br>🔌 bp Mare Nostrum (Av. Mare Nostrum)                     </div></div>`)[0];
+                popup_fd14a9d5848d373257c7163904f12cff.setContent(html_c15771a4d983f6a9d4b7551cba804bd4);
+            
+        
+
+        circle_marker_e957b233793e39416afc64a3fd8bad04.bindPopup(popup_fd14a9d5848d373257c7163904f12cff)
+        ;
+
+        
+    
+    
+            circle_marker_e957b233793e39416afc64a3fd8bad04.bindTooltip(
+                `<div>
+                     3. Covirán Cabo Gata — Conductor FUR-TA-10
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_17bc87f6e06d84d8fc6b1bcf8f356aa0 = L.circleMarker(
+                [36.9212, -2.1855],
+                {"bubblingMouseEvents": true, "color": "#6B4226", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#6B4226", "fillOpacity": 0.85, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 3}
+            ).addTo(feature_group_9ed2bb44834cedd0833c8df608f41dc0);
+        
+    
+        var popup_2d4a395a99b81164fafd447b2ce416f7 = L.popup({
+  "maxWidth": 210,
+});
+
+        
+            
+                var html_3b017381a1c12b9496c30271fe83fe26 = $(`<div id="html_3b017381a1c12b9496c30271fe83fe26" style="width: 100.0%; height: 100.0%;"><div style="font-family:Arial;                                    min-width:170px;">                         <b>Parada 4 de 5</b><br>                         <b>Covirán Níjar Venta</b><br>                         <hr style="margin:4px 0;">                         🚚 Conductor FUR-TA-10<br>                         🕐 Salida: 06:00<br>                         ⚡ Recarga: SÍ                         <br>🔌 bp Mare Nostrum (Av. Mare Nostrum)                     </div></div>`)[0];
+                popup_2d4a395a99b81164fafd447b2ce416f7.setContent(html_3b017381a1c12b9496c30271fe83fe26);
+            
+        
+
+        circle_marker_17bc87f6e06d84d8fc6b1bcf8f356aa0.bindPopup(popup_2d4a395a99b81164fafd447b2ce416f7)
+        ;
+
+        
+    
+    
+            circle_marker_17bc87f6e06d84d8fc6b1bcf8f356aa0.bindTooltip(
+                `<div>
+                     4. Covirán Níjar Venta — Conductor FUR-TA-10
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_e1ae3764b95243f928bfcbfaaa2f03cb = L.circleMarker(
+                [37.0988, -2.1255],
+                {"bubblingMouseEvents": true, "color": "#6B4226", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#6B4226", "fillOpacity": 0.85, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 3}
+            ).addTo(feature_group_9ed2bb44834cedd0833c8df608f41dc0);
+        
+    
+        var popup_d7d9b4af02bc228f20c34293857bce01 = L.popup({
+  "maxWidth": 210,
+});
+
+        
+            
+                var html_a6b5539b188752eb57e235c02b87a48f = $(`<div id="html_a6b5539b188752eb57e235c02b87a48f" style="width: 100.0%; height: 100.0%;"><div style="font-family:Arial;                                    min-width:170px;">                         <b>Parada 5 de 5</b><br>                         <b>Covirán Sorbas</b><br>                         <hr style="margin:4px 0;">                         🚚 Conductor FUR-TA-10<br>                         🕐 Salida: 06:00<br>                         ⚡ Recarga: SÍ                         <br>🔌 bp Mare Nostrum (Av. Mare Nostrum)                     </div></div>`)[0];
+                popup_d7d9b4af02bc228f20c34293857bce01.setContent(html_a6b5539b188752eb57e235c02b87a48f);
+            
+        
+
+        circle_marker_e1ae3764b95243f928bfcbfaaa2f03cb.bindPopup(popup_d7d9b4af02bc228f20c34293857bce01)
+        ;
+
+        
+    
+    
+            circle_marker_e1ae3764b95243f928bfcbfaaa2f03cb.bindTooltip(
+                `<div>
+                     5. Covirán Sorbas — Conductor FUR-TA-10
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var poly_line_3cf4e5a09f99f275f41c9a8d636a0819 = L.polyline(
+                [[36.7755, -2.8112], [36.8522, -2.4455], [36.8455, -2.3588], [36.7812, -2.2455], [36.9212, -2.1855], [37.0988, -2.1255], [36.7755, -2.8112]],
+                {"bubblingMouseEvents": true, "color": "#C73E1D", "dashArray": "8 4", "dashOffset": null, "fill": false, "fillColor": "#C73E1D", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.9, "smoothFactor": 1.0, "stroke": true, "weight": 3}
+            ).addTo(feature_group_9ed2bb44834cedd0833c8df608f41dc0);
+        
+    
+            poly_line_3cf4e5a09f99f275f41c9a8d636a0819.bindTooltip(
+                `<div>
+                     ⚡ RECARGA — Conductor FUR-TA-10 | 5 tiendas | 205.02 km | Coste: 65.46 €
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var marker_aa43c683f240d4aa252ba07576c4c713 = L.marker(
+                [36.835, -2.421],
+                {
+}
+            ).addTo(feature_group_9ed2bb44834cedd0833c8df608f41dc0);
+        
+    
+            var icon_268c01a8ff5143e5bd742df0301f0291 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "orange",
+  "iconColor": "white",
+  "icon": "bolt",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_32ff7f553f477bc5b712285631623966 = L.popup({
+  "maxWidth": 240,
+});
+
+        
+            
+                var html_eabdfdbe90a756a175a75d8aac61f8c9 = $(`<div id="html_eabdfdbe90a756a175a75d8aac61f8c9" style="width: 100.0%; height: 100.0%;"><div style="font-family:Arial;                                        min-width:200px;">                             <b style="color:#F18F01;                                       font-size:13px;">                                 ⚡ bp Mare Nostrum (Av. Mare Nostrum)                             </b><br>                             <hr style="margin:4px 0;">                             🏷 <b>Marca:</b> Iberdrola | bp pulse<br>                             ⚡ <b>Potencia:</b> 150 kW<br>                             🔌 <b>Cargadores:</b> 2<br>                             💶 <b>Tarifa:</b> 0.6 €/kWh<br>                             🕐 <b>Horario:</b> Abierto 24h<br>                             <hr style="margin:4px 0;">                             🚚 <b>Rutas que recargan aquí:</b>                                 1                         </div></div>`)[0];
+                popup_32ff7f553f477bc5b712285631623966.setContent(html_eabdfdbe90a756a175a75d8aac61f8c9);
+            
+        
+
+        marker_aa43c683f240d4aa252ba07576c4c713.bindPopup(popup_32ff7f553f477bc5b712285631623966)
+        ;
+
+        
+    
+    
+            marker_aa43c683f240d4aa252ba07576c4c713.bindTooltip(
+                `<div>
+                     ⚡ bp Mare Nostrum (Av. Mare Nostrum) (1 recargas)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_aa43c683f240d4aa252ba07576c4c713.setIcon(icon_268c01a8ff5143e5bd742df0301f0291);
+            
+    
+            feature_group_9ed2bb44834cedd0833c8df608f41dc0.addTo(map_98ce2bb500bb88131bba6f8ee93befbd);
+        
+    
+            var feature_group_3031b63396815658bb7acc42e3411f3d = L.featureGroup(
+                {
+}
+            );
+        
+    
+            var circle_marker_e029a0a856d7b6834d1a76f46e65e4d9 = L.circleMarker(
+                [36.9855, -3.0855],
+                {"bubblingMouseEvents": true, "color": "#2D6A4F", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#2D6A4F", "fillOpacity": 0.85, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 3}
+            ).addTo(feature_group_3031b63396815658bb7acc42e3411f3d);
+        
+    
+        var popup_a1c7e344566254b60f15de87758b19c7 = L.popup({
+  "maxWidth": 210,
+});
+
+        
+            
+                var html_d358f593dec2cb2bbfb26bd0dca0f4dc = $(`<div id="html_d358f593dec2cb2bbfb26bd0dca0f4dc" style="width: 100.0%; height: 100.0%;"><div style="font-family:Arial;                                    min-width:170px;">                         <b>Parada 1 de 5</b><br>                         <b>Covirán Yegen</b><br>                         <hr style="margin:4px 0;">                         🚚 Conductor FUR-TA-11<br>                         🕐 Salida: 06:00<br>                         ⚡ Recarga: NO                                              </div></div>`)[0];
+                popup_a1c7e344566254b60f15de87758b19c7.setContent(html_d358f593dec2cb2bbfb26bd0dca0f4dc);
+            
+        
+
+        circle_marker_e029a0a856d7b6834d1a76f46e65e4d9.bindPopup(popup_a1c7e344566254b60f15de87758b19c7)
+        ;
+
+        
+    
+    
+            circle_marker_e029a0a856d7b6834d1a76f46e65e4d9.bindTooltip(
+                `<div>
+                     1. Covirán Yegen — Conductor FUR-TA-11
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_1be52a98f348a4fd2740926f6d7554be = L.circleMarker(
+                [37.1212, -2.5455],
+                {"bubblingMouseEvents": true, "color": "#2D6A4F", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#2D6A4F", "fillOpacity": 0.85, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 3}
+            ).addTo(feature_group_3031b63396815658bb7acc42e3411f3d);
+        
+    
+        var popup_5928621824a580677b570d6c7f92f6f7 = L.popup({
+  "maxWidth": 210,
+});
+
+        
+            
+                var html_61a736a0de1dd76e3afdf4e717cd0097 = $(`<div id="html_61a736a0de1dd76e3afdf4e717cd0097" style="width: 100.0%; height: 100.0%;"><div style="font-family:Arial;                                    min-width:170px;">                         <b>Parada 2 de 5</b><br>                         <b>Covirán Gérgal</b><br>                         <hr style="margin:4px 0;">                         🚚 Conductor FUR-TA-11<br>                         🕐 Salida: 06:00<br>                         ⚡ Recarga: NO                                              </div></div>`)[0];
+                popup_5928621824a580677b570d6c7f92f6f7.setContent(html_61a736a0de1dd76e3afdf4e717cd0097);
+            
+        
+
+        circle_marker_1be52a98f348a4fd2740926f6d7554be.bindPopup(popup_5928621824a580677b570d6c7f92f6f7)
+        ;
+
+        
+    
+    
+            circle_marker_1be52a98f348a4fd2740926f6d7554be.bindTooltip(
+                `<div>
+                     2. Covirán Gérgal — Conductor FUR-TA-11
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_f56c264813d816f0676d28d1258a4d66 = L.circleMarker(
+                [37.0533, -2.3933],
+                {"bubblingMouseEvents": true, "color": "#2D6A4F", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#2D6A4F", "fillOpacity": 0.85, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 3}
+            ).addTo(feature_group_3031b63396815658bb7acc42e3411f3d);
+        
+    
+        var popup_ffd611fa58e608cd2816f6d73629c11a = L.popup({
+  "maxWidth": 210,
+});
+
+        
+            
+                var html_677963cb5eb40a495839f5d0e01c77cd = $(`<div id="html_677963cb5eb40a495839f5d0e01c77cd" style="width: 100.0%; height: 100.0%;"><div style="font-family:Arial;                                    min-width:170px;">                         <b>Parada 3 de 5</b><br>                         <b>Covirán Tabernas Alm.</b><br>                         <hr style="margin:4px 0;">                         🚚 Conductor FUR-TA-11<br>                         🕐 Salida: 06:00<br>                         ⚡ Recarga: NO                                              </div></div>`)[0];
+                popup_ffd611fa58e608cd2816f6d73629c11a.setContent(html_677963cb5eb40a495839f5d0e01c77cd);
+            
+        
+
+        circle_marker_f56c264813d816f0676d28d1258a4d66.bindPopup(popup_ffd611fa58e608cd2816f6d73629c11a)
+        ;
+
+        
+    
+    
+            circle_marker_f56c264813d816f0676d28d1258a4d66.bindTooltip(
+                `<div>
+                     3. Covirán Tabernas Alm. — Conductor FUR-TA-11
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_b61bc7abb853e0d0784a50e2d0b02118 = L.circleMarker(
+                [37.0522, -2.3922],
+                {"bubblingMouseEvents": true, "color": "#2D6A4F", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#2D6A4F", "fillOpacity": 0.85, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 3}
+            ).addTo(feature_group_3031b63396815658bb7acc42e3411f3d);
+        
+    
+        var popup_7168a27fb7c46a939bb04c986623b391 = L.popup({
+  "maxWidth": 210,
+});
+
+        
+            
+                var html_d91218ca930f3b8420de2c510dec4d74 = $(`<div id="html_d91218ca930f3b8420de2c510dec4d74" style="width: 100.0%; height: 100.0%;"><div style="font-family:Arial;                                    min-width:170px;">                         <b>Parada 4 de 5</b><br>                         <b>Covirán Tabernas And.</b><br>                         <hr style="margin:4px 0;">                         🚚 Conductor FUR-TA-11<br>                         🕐 Salida: 06:00<br>                         ⚡ Recarga: NO                                              </div></div>`)[0];
+                popup_7168a27fb7c46a939bb04c986623b391.setContent(html_d91218ca930f3b8420de2c510dec4d74);
+            
+        
+
+        circle_marker_b61bc7abb853e0d0784a50e2d0b02118.bindPopup(popup_7168a27fb7c46a939bb04c986623b391)
+        ;
+
+        
+    
+    
+            circle_marker_b61bc7abb853e0d0784a50e2d0b02118.bindTooltip(
+                `<div>
+                     4. Covirán Tabernas And. — Conductor FUR-TA-11
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_1a30db7543ec753a0dc7002c8ca7276a = L.circleMarker(
+                [37.0512, -2.3912],
+                {"bubblingMouseEvents": true, "color": "#2D6A4F", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#2D6A4F", "fillOpacity": 0.85, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 3}
+            ).addTo(feature_group_3031b63396815658bb7acc42e3411f3d);
+        
+    
+        var popup_ddb82e96b2a60abb72f56c1310088ccd = L.popup({
+  "maxWidth": 210,
+});
+
+        
+            
+                var html_47018ebfe697e14f6b01df02b7da141f = $(`<div id="html_47018ebfe697e14f6b01df02b7da141f" style="width: 100.0%; height: 100.0%;"><div style="font-family:Arial;                                    min-width:170px;">                         <b>Parada 5 de 5</b><br>                         <b>Covirán Tabernas Ext.</b><br>                         <hr style="margin:4px 0;">                         🚚 Conductor FUR-TA-11<br>                         🕐 Salida: 06:00<br>                         ⚡ Recarga: NO                                              </div></div>`)[0];
+                popup_ddb82e96b2a60abb72f56c1310088ccd.setContent(html_47018ebfe697e14f6b01df02b7da141f);
+            
+        
+
+        circle_marker_1a30db7543ec753a0dc7002c8ca7276a.bindPopup(popup_ddb82e96b2a60abb72f56c1310088ccd)
+        ;
+
+        
+    
+    
+            circle_marker_1a30db7543ec753a0dc7002c8ca7276a.bindTooltip(
+                `<div>
+                     5. Covirán Tabernas Ext. — Conductor FUR-TA-11
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var poly_line_c4f16c0849222fdc24fd5121db63c3d7 = L.polyline(
+                [[36.7755, -2.8112], [36.9855, -3.0855], [37.1212, -2.5455], [37.0533, -2.3933], [37.0522, -2.3922], [37.0512, -2.3912], [36.7755, -2.8112]],
+                {"bubblingMouseEvents": true, "color": "#2D6A4F", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "#2D6A4F", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.7, "smoothFactor": 1.0, "stroke": true, "weight": 2}
+            ).addTo(feature_group_3031b63396815658bb7acc42e3411f3d);
+        
+    
+            poly_line_c4f16c0849222fdc24fd5121db63c3d7.bindTooltip(
+                `<div>
+                     Conductor FUR-TA-11 | 5 tiendas | 188.08 km | Coste: 33.85 €
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            feature_group_3031b63396815658bb7acc42e3411f3d.addTo(map_98ce2bb500bb88131bba6f8ee93befbd);
+        
+    
+            var layer_control_cd594c6cee9e8f36ae87bc4f9ae43ba4_layers = {
+                base_layers : {
+                    "openstreetmap" : tile_layer_aea31dae8c455e6e3a2cbdc16bd6bf99,
+                },
+                overlays :  {
+                    "\ud83d\ude9a Conductor FUR-TA-01 (4 tiendas, 24.09 km)" : feature_group_31cc63c1376ed4cd1da5a76e9ad22d79,
+                    "\ud83d\ude9a Conductor FUR-TA-02 (5 tiendas, 72.63 km)" : feature_group_b1ac81a2da1327e50210a7f6947ae8de,
+                    "\ud83d\ude9a Conductor FUR-TA-03 (4 tiendas, 54.72 km)" : feature_group_8e43b62b4e6f4fb0be6bb431434c091a,
+                    "\ud83d\ude9a Conductor FUR-TA-04 (4 tiendas, 102.91 km)" : feature_group_7c7cefe4bae3db7038c98c2cc0ae754e,
+                    "\ud83d\ude9a Conductor FUR-TA-05 (5 tiendas, 54.0 km)" : feature_group_0a88024dbbd824c63cd8955a0346a41b,
+                    "\ud83d\ude9a Conductor FUR-TA-06 (4 tiendas, 106.37 km)" : feature_group_fa2164cba67b1febe59f027f18daa296,
+                    "\ud83d\ude9a Conductor FUR-TA-07 (5 tiendas, 99.57 km)" : feature_group_10e947d537833c16c8457aa7c1df14da,
+                    "\ud83d\ude9a Conductor FUR-TA-08 (4 tiendas, 113.13 km)" : feature_group_e1d3e01997036f249d90c53fab4acbda,
+                    "\ud83d\ude9a Conductor FUR-TA-09 (5 tiendas, 104.75 km)" : feature_group_aecd954baae572ae1b2a13456587bfe5,
+                    "\u26a1 Conductor FUR-TA-10 (5 tiendas, 205.02 km)" : feature_group_9ed2bb44834cedd0833c8df608f41dc0,
+                    "\ud83d\ude9a Conductor FUR-TA-11 (5 tiendas, 188.08 km)" : feature_group_3031b63396815658bb7acc42e3411f3d,
+                },
+            };
+            let layer_control_cd594c6cee9e8f36ae87bc4f9ae43ba4 = L.control.layers(
+                layer_control_cd594c6cee9e8f36ae87bc4f9ae43ba4_layers.base_layers,
+                layer_control_cd594c6cee9e8f36ae87bc4f9ae43ba4_layers.overlays,
+                {
+  "position": "topleft",
+  "collapsed": false,
+  "autoZIndex": true,
+}
+            ).addTo(map_98ce2bb500bb88131bba6f8ee93befbd);
+
+        
+</script>
+</html>

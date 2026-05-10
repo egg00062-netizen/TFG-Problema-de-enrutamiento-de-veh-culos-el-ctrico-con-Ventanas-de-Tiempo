@@ -1,0 +1,729 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+    
+            <meta name="viewport" content="width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+            <style>
+                #map_86cf5263c449be8053ae79b04029163b {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+                .leaflet-container { font-size: 1rem; }
+            </style>
+
+            <style>html, body {
+                width: 100%;
+                height: 100%;
+                margin: 0;
+                padding: 0;
+            }
+            </style>
+
+            <style>#map {
+                position:absolute;
+                top:0;
+                bottom:0;
+                right:0;
+                left:0;
+                }
+            </style>
+
+            <script>
+                L_NO_TOUCH = false;
+                L_DISABLE_3D = false;
+            </script>
+
+        
+</head>
+<body>
+    
+    
+    <div style="
+        position: fixed;
+        bottom: 30px; right: 30px;
+        background-color: white;
+        border: 2px solid #2E86AB;
+        border-radius: 10px;
+        padding: 14px 18px;
+        font-family: Arial, sans-serif;
+        font-size: 12px;
+        box-shadow: 3px 3px 8px rgba(0,0,0,0.3);
+        z-index: 1000;
+        min-width: 250px;
+    ">
+        <b style="color:#2E86AB; font-size:14px;">
+            🏭 Baza
+        </b><br>
+        <hr style="margin:6px 0; border-color:#ddd;">
+        🏪 <b>Supermercados:</b> 12<br>
+        🚚 <b>Rutas totales:</b> 3<br>
+        &nbsp;&nbsp;&nbsp;
+            ├─ Sin recarga: 2<br>
+        &nbsp;&nbsp;&nbsp;
+            └─ ⚡ Con recarga: 1<br>
+        📍 <b>Km totales:</b> 479.74 km<br>
+        💶 <b>Coste total:</b> 112.53 €<br>
+        <hr style="margin:6px 0; border-color:#ddd;">
+        <span style="color:#2E86AB;">━━</span>
+            Ruta sin recarga<br>
+        <span style="color:#C73E1D;">╌╌</span>
+            Ruta con recarga<br>
+        🔴 Almacén &nbsp;&nbsp;
+        🟠 Electrolinera<br>
+        <small style="color:#888;">
+            ☝ Usa el panel izquierdo para<br>
+            &nbsp;&nbsp;&nbsp;activar/desactivar rutas
+        </small>
+    </div>
+    
+    
+            <div class="folium-map" id="map_86cf5263c449be8053ae79b04029163b" ></div>
+        
+</body>
+<script>
+    
+    
+            var map_86cf5263c449be8053ae79b04029163b = L.map(
+                "map_86cf5263c449be8053ae79b04029163b",
+                {
+                    center: [37.4912, -2.7712],
+                    crs: L.CRS.EPSG3857,
+                    ...{
+  "zoom": 9,
+  "zoomControl": true,
+  "preferCanvas": false,
+}
+
+                }
+            );
+
+            
+
+        
+    
+            var tile_layer_618a49c132720596b0bb198763146a16 = L.tileLayer(
+                "https://tile.openstreetmap.org/{z}/{x}/{y}.png",
+                {
+  "minZoom": 0,
+  "maxZoom": 19,
+  "maxNativeZoom": 19,
+  "noWrap": false,
+  "attribution": "\u0026copy; \u003ca href=\"https://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors",
+  "subdomains": "abc",
+  "detectRetina": false,
+  "tms": false,
+  "opacity": 1,
+}
+
+            );
+        
+    
+            tile_layer_618a49c132720596b0bb198763146a16.addTo(map_86cf5263c449be8053ae79b04029163b);
+        
+    
+            var marker_908d567e3421685e6ca4bf2a87a22679 = L.marker(
+                [37.4912, -2.7712],
+                {
+}
+            ).addTo(map_86cf5263c449be8053ae79b04029163b);
+        
+    
+            var icon_bd42c94afdd21d998ce68dd1bd6db34e = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "home",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_d4e9315e23f30fe1192038ddf17743db = L.popup({
+  "maxWidth": 260,
+});
+
+        
+            
+                var html_ae9b0250a51452775fc5a5a5b7932e0f = $(`<div id="html_ae9b0250a51452775fc5a5a5b7932e0f" style="width: 100.0%; height: 100.0%;"><div style="font-family:Arial; min-width:210px;">                 <b style="color:#C73E1D; font-size:14px;">                     🏭 Baza                 </b><br>                 <hr style="margin:4px 0;">                 🏪 <b>Supermercados:</b> 12<br>                 🚚 <b>Rutas totales:</b> 3<br>                 &nbsp;&nbsp;&nbsp;                     ├─ Sin recarga: 2<br>                 &nbsp;&nbsp;&nbsp;                     └─ ⚡ Con recarga: 1<br>                 📍 <b>Km totales:</b> 479.74 km<br>                 💶 <b>Coste total:</b> 112.53 €             </div></div>`)[0];
+                popup_d4e9315e23f30fe1192038ddf17743db.setContent(html_ae9b0250a51452775fc5a5a5b7932e0f);
+            
+        
+
+        marker_908d567e3421685e6ca4bf2a87a22679.bindPopup(popup_d4e9315e23f30fe1192038ddf17743db)
+        ;
+
+        
+    
+    
+            marker_908d567e3421685e6ca4bf2a87a22679.bindTooltip(
+                `<div>
+                     🏭 ALMACÉN: Baza
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_908d567e3421685e6ca4bf2a87a22679.setIcon(icon_bd42c94afdd21d998ce68dd1bd6db34e);
+            
+    
+            var feature_group_0892071bfd2b347b460acfda1f254c29 = L.featureGroup(
+                {
+}
+            );
+        
+    
+            var circle_marker_fb5c50044c781f510896409744a258ab = L.circleMarker(
+                [37.5855, -2.5712],
+                {"bubblingMouseEvents": true, "color": "#2E86AB", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#2E86AB", "fillOpacity": 0.85, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 3}
+            ).addTo(feature_group_0892071bfd2b347b460acfda1f254c29);
+        
+    
+        var popup_9deb5f2f0d72ad5107c37892a8ccc0b1 = L.popup({
+  "maxWidth": 210,
+});
+
+        
+            
+                var html_c1ca2df273b26c95c5f4273eaefd4e7a = $(`<div id="html_c1ca2df273b26c95c5f4273eaefd4e7a" style="width: 100.0%; height: 100.0%;"><div style="font-family:Arial;                                    min-width:170px;">                         <b>Parada 1 de 5</b><br>                         <b>Covirán Cúllar Mayor</b><br>                         <hr style="margin:4px 0;">                         🚚 Conductor FUR-TA-01<br>                         🕐 Salida: 06:00<br>                         ⚡ Recarga: SÍ                         <br>🔌 Zunder Baza (Hotel Mirasierra) (A-92N)                     </div></div>`)[0];
+                popup_9deb5f2f0d72ad5107c37892a8ccc0b1.setContent(html_c1ca2df273b26c95c5f4273eaefd4e7a);
+            
+        
+
+        circle_marker_fb5c50044c781f510896409744a258ab.bindPopup(popup_9deb5f2f0d72ad5107c37892a8ccc0b1)
+        ;
+
+        
+    
+    
+            circle_marker_fb5c50044c781f510896409744a258ab.bindTooltip(
+                `<div>
+                     1. Covirán Cúllar Mayor — Conductor FUR-TA-01
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_fb78c35997787f7b548cf9531c463f37 = L.circleMarker(
+                [37.2655, -2.2555],
+                {"bubblingMouseEvents": true, "color": "#2E86AB", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#2E86AB", "fillOpacity": 0.85, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 3}
+            ).addTo(feature_group_0892071bfd2b347b460acfda1f254c29);
+        
+    
+        var popup_f4eb90b5fa724e13b6e1959f3c46afba = L.popup({
+  "maxWidth": 210,
+});
+
+        
+            
+                var html_bb2a0c063b63b497b7905638a59a58f3 = $(`<div id="html_bb2a0c063b63b497b7905638a59a58f3" style="width: 100.0%; height: 100.0%;"><div style="font-family:Arial;                                    min-width:170px;">                         <b>Parada 2 de 5</b><br>                         <b>Covirán Chercos</b><br>                         <hr style="margin:4px 0;">                         🚚 Conductor FUR-TA-01<br>                         🕐 Salida: 06:00<br>                         ⚡ Recarga: SÍ                         <br>🔌 Zunder Baza (Hotel Mirasierra) (A-92N)                     </div></div>`)[0];
+                popup_f4eb90b5fa724e13b6e1959f3c46afba.setContent(html_bb2a0c063b63b497b7905638a59a58f3);
+            
+        
+
+        circle_marker_fb78c35997787f7b548cf9531c463f37.bindPopup(popup_f4eb90b5fa724e13b6e1959f3c46afba)
+        ;
+
+        
+    
+    
+            circle_marker_fb78c35997787f7b548cf9531c463f37.bindTooltip(
+                `<div>
+                     2. Covirán Chercos — Conductor FUR-TA-01
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_f65d8d50319bcd37f199ff967ec2892e = L.circleMarker(
+                [37.1412, -2.7755],
+                {"bubblingMouseEvents": true, "color": "#2E86AB", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#2E86AB", "fillOpacity": 0.85, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 3}
+            ).addTo(feature_group_0892071bfd2b347b460acfda1f254c29);
+        
+    
+        var popup_b75fd16cce9b3615f35494cbca18ee7c = L.popup({
+  "maxWidth": 210,
+});
+
+        
+            
+                var html_cfbdb5423d6920b74c592104c64c2fff = $(`<div id="html_cfbdb5423d6920b74c592104c64c2fff" style="width: 100.0%; height: 100.0%;"><div style="font-family:Arial;                                    min-width:170px;">                         <b>Parada 3 de 5</b><br>                         <b>Covirán Abla</b><br>                         <hr style="margin:4px 0;">                         🚚 Conductor FUR-TA-01<br>                         🕐 Salida: 06:00<br>                         ⚡ Recarga: SÍ                         <br>🔌 Zunder Baza (Hotel Mirasierra) (A-92N)                     </div></div>`)[0];
+                popup_b75fd16cce9b3615f35494cbca18ee7c.setContent(html_cfbdb5423d6920b74c592104c64c2fff);
+            
+        
+
+        circle_marker_f65d8d50319bcd37f199ff967ec2892e.bindPopup(popup_b75fd16cce9b3615f35494cbca18ee7c)
+        ;
+
+        
+    
+    
+            circle_marker_f65d8d50319bcd37f199ff967ec2892e.bindTooltip(
+                `<div>
+                     3. Covirán Abla — Conductor FUR-TA-01
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_64d8915b22de3606abd5193996e731fa = L.circleMarker(
+                [37.1812, -3.1155],
+                {"bubblingMouseEvents": true, "color": "#2E86AB", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#2E86AB", "fillOpacity": 0.85, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 3}
+            ).addTo(feature_group_0892071bfd2b347b460acfda1f254c29);
+        
+    
+        var popup_2b6bf92107c072558c924bcb8bbe2bec = L.popup({
+  "maxWidth": 210,
+});
+
+        
+            
+                var html_346623e949d7e91d86a4e48a66c31073 = $(`<div id="html_346623e949d7e91d86a4e48a66c31073" style="width: 100.0%; height: 100.0%;"><div style="font-family:Arial;                                    min-width:170px;">                         <b>Parada 4 de 5</b><br>                         <b>Covirán Alquife</b><br>                         <hr style="margin:4px 0;">                         🚚 Conductor FUR-TA-01<br>                         🕐 Salida: 06:00<br>                         ⚡ Recarga: SÍ                         <br>🔌 Zunder Baza (Hotel Mirasierra) (A-92N)                     </div></div>`)[0];
+                popup_2b6bf92107c072558c924bcb8bbe2bec.setContent(html_346623e949d7e91d86a4e48a66c31073);
+            
+        
+
+        circle_marker_64d8915b22de3606abd5193996e731fa.bindPopup(popup_2b6bf92107c072558c924bcb8bbe2bec)
+        ;
+
+        
+    
+    
+            circle_marker_64d8915b22de3606abd5193996e731fa.bindTooltip(
+                `<div>
+                     4. Covirán Alquife — Conductor FUR-TA-01
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_84cdc7a3152bfaf8794cbdf054632bcb = L.circleMarker(
+                [37.3012, -3.1355],
+                {"bubblingMouseEvents": true, "color": "#2E86AB", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#2E86AB", "fillOpacity": 0.85, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 3}
+            ).addTo(feature_group_0892071bfd2b347b460acfda1f254c29);
+        
+    
+        var popup_192e1830dab3359d640470dea287d025 = L.popup({
+  "maxWidth": 210,
+});
+
+        
+            
+                var html_560f0d96df9f8c4802f7b13b8de489c5 = $(`<div id="html_560f0d96df9f8c4802f7b13b8de489c5" style="width: 100.0%; height: 100.0%;"><div style="font-family:Arial;                                    min-width:170px;">                         <b>Parada 5 de 5</b><br>                         <b>Covirán Guadix Duque</b><br>                         <hr style="margin:4px 0;">                         🚚 Conductor FUR-TA-01<br>                         🕐 Salida: 06:00<br>                         ⚡ Recarga: SÍ                         <br>🔌 Zunder Baza (Hotel Mirasierra) (A-92N)                     </div></div>`)[0];
+                popup_192e1830dab3359d640470dea287d025.setContent(html_560f0d96df9f8c4802f7b13b8de489c5);
+            
+        
+
+        circle_marker_84cdc7a3152bfaf8794cbdf054632bcb.bindPopup(popup_192e1830dab3359d640470dea287d025)
+        ;
+
+        
+    
+    
+            circle_marker_84cdc7a3152bfaf8794cbdf054632bcb.bindTooltip(
+                `<div>
+                     5. Covirán Guadix Duque — Conductor FUR-TA-01
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var poly_line_a291694878b413cee358e2625e8d07ca = L.polyline(
+                [[37.4912, -2.7712], [37.5855, -2.5712], [37.2655, -2.2555], [37.1412, -2.7755], [37.1812, -3.1155], [37.3012, -3.1355], [37.4912, -2.7712]],
+                {"bubblingMouseEvents": true, "color": "#C73E1D", "dashArray": "8 4", "dashOffset": null, "fill": false, "fillColor": "#C73E1D", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.9, "smoothFactor": 1.0, "stroke": true, "weight": 3}
+            ).addTo(feature_group_0892071bfd2b347b460acfda1f254c29);
+        
+    
+            poly_line_a291694878b413cee358e2625e8d07ca.bindTooltip(
+                `<div>
+                     ⚡ RECARGA — Conductor FUR-TA-01 | 5 tiendas | 249.19 km | Coste: 71.03 €
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var marker_b04c83a04a6fa1c037091bcfa78892a6 = L.marker(
+                [37.491, -2.773],
+                {
+}
+            ).addTo(feature_group_0892071bfd2b347b460acfda1f254c29);
+        
+    
+            var icon_95887f4dbac53e4e4792be19b1d30642 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "orange",
+  "iconColor": "white",
+  "icon": "bolt",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_35fef177a5f27cba6b711b460226330c = L.popup({
+  "maxWidth": 240,
+});
+
+        
+            
+                var html_d079f24a991c93d9d12b7508647d8871 = $(`<div id="html_d079f24a991c93d9d12b7508647d8871" style="width: 100.0%; height: 100.0%;"><div style="font-family:Arial;                                        min-width:200px;">                             <b style="color:#F18F01;                                       font-size:13px;">                                 ⚡ Zunder Baza (Hotel Mirasierra) (A-92N)                             </b><br>                             <hr style="margin:4px 0;">                             🏷 <b>Marca:</b> Zunder<br>                             ⚡ <b>Potencia:</b> 360 kW<br>                             🔌 <b>Cargadores:</b> 4<br>                             💶 <b>Tarifa:</b> 0.55 €/kWh<br>                             🕐 <b>Horario:</b> Abierto 24h<br>                             <hr style="margin:4px 0;">                             🚚 <b>Rutas que recargan aquí:</b>                                 1                         </div></div>`)[0];
+                popup_35fef177a5f27cba6b711b460226330c.setContent(html_d079f24a991c93d9d12b7508647d8871);
+            
+        
+
+        marker_b04c83a04a6fa1c037091bcfa78892a6.bindPopup(popup_35fef177a5f27cba6b711b460226330c)
+        ;
+
+        
+    
+    
+            marker_b04c83a04a6fa1c037091bcfa78892a6.bindTooltip(
+                `<div>
+                     ⚡ Zunder Baza (Hotel Mirasierra) (A-92N) (1 recargas)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_b04c83a04a6fa1c037091bcfa78892a6.setIcon(icon_95887f4dbac53e4e4792be19b1d30642);
+            
+    
+            feature_group_0892071bfd2b347b460acfda1f254c29.addTo(map_86cf5263c449be8053ae79b04029163b);
+        
+    
+            var feature_group_dc1f87dbdaa196f69f34fa8de5fb0daf = L.featureGroup(
+                {
+}
+            );
+        
+    
+            var circle_marker_8116e916e1b60e87803f022476a13b93 = L.circleMarker(
+                [37.3112, -3.0955],
+                {"bubblingMouseEvents": true, "color": "#C73E1D", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#C73E1D", "fillOpacity": 0.85, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 3}
+            ).addTo(feature_group_dc1f87dbdaa196f69f34fa8de5fb0daf);
+        
+    
+        var popup_4711da9ee285d4969122b152c36cb35c = L.popup({
+  "maxWidth": 210,
+});
+
+        
+            
+                var html_0a6bff5b5c6b1d44064320997e51149c = $(`<div id="html_0a6bff5b5c6b1d44064320997e51149c" style="width: 100.0%; height: 100.0%;"><div style="font-family:Arial;                                    min-width:170px;">                         <b>Parada 1 de 4</b><br>                         <b>Covirán Alcudia G.</b><br>                         <hr style="margin:4px 0;">                         🚚 Conductor FUR-TA-02<br>                         🕐 Salida: 06:00<br>                         ⚡ Recarga: NO                                              </div></div>`)[0];
+                popup_4711da9ee285d4969122b152c36cb35c.setContent(html_0a6bff5b5c6b1d44064320997e51149c);
+            
+        
+
+        circle_marker_8116e916e1b60e87803f022476a13b93.bindPopup(popup_4711da9ee285d4969122b152c36cb35c)
+        ;
+
+        
+    
+    
+            circle_marker_8116e916e1b60e87803f022476a13b93.bindTooltip(
+                `<div>
+                     1. Covirán Alcudia G. — Conductor FUR-TA-02
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_af2abb23aa39b78ccbd45d3410abbb5b = L.circleMarker(
+                [37.3022, -3.1312],
+                {"bubblingMouseEvents": true, "color": "#C73E1D", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#C73E1D", "fillOpacity": 0.85, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 3}
+            ).addTo(feature_group_dc1f87dbdaa196f69f34fa8de5fb0daf);
+        
+    
+        var popup_3da5c1d8f7794455cee4ebc940cbb8c2 = L.popup({
+  "maxWidth": 210,
+});
+
+        
+            
+                var html_e40c643f65c466802355645cdf923995 = $(`<div id="html_e40c643f65c466802355645cdf923995" style="width: 100.0%; height: 100.0%;"><div style="font-family:Arial;                                    min-width:170px;">                         <b>Parada 2 de 4</b><br>                         <b>Covirán Guadix Pedro</b><br>                         <hr style="margin:4px 0;">                         🚚 Conductor FUR-TA-02<br>                         🕐 Salida: 06:00<br>                         ⚡ Recarga: NO                                              </div></div>`)[0];
+                popup_3da5c1d8f7794455cee4ebc940cbb8c2.setContent(html_e40c643f65c466802355645cdf923995);
+            
+        
+
+        circle_marker_af2abb23aa39b78ccbd45d3410abbb5b.bindPopup(popup_3da5c1d8f7794455cee4ebc940cbb8c2)
+        ;
+
+        
+    
+    
+            circle_marker_af2abb23aa39b78ccbd45d3410abbb5b.bindTooltip(
+                `<div>
+                     2. Covirán Guadix Pedro — Conductor FUR-TA-02
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_41cd6a5f00d3efba37142dc97eb0db14 = L.circleMarker(
+                [37.3012, -3.1355],
+                {"bubblingMouseEvents": true, "color": "#C73E1D", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#C73E1D", "fillOpacity": 0.85, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 3}
+            ).addTo(feature_group_dc1f87dbdaa196f69f34fa8de5fb0daf);
+        
+    
+        var popup_4ac2c148d7372f096dbc07c2cf05a7c1 = L.popup({
+  "maxWidth": 210,
+});
+
+        
+            
+                var html_d7f405e329a4dfc8b03e4395f924f61a = $(`<div id="html_d7f405e329a4dfc8b03e4395f924f61a" style="width: 100.0%; height: 100.0%;"><div style="font-family:Arial;                                    min-width:170px;">                         <b>Parada 3 de 4</b><br>                         <b>Covirán Guadix B.A.</b><br>                         <hr style="margin:4px 0;">                         🚚 Conductor FUR-TA-02<br>                         🕐 Salida: 06:00<br>                         ⚡ Recarga: NO                                              </div></div>`)[0];
+                popup_4ac2c148d7372f096dbc07c2cf05a7c1.setContent(html_d7f405e329a4dfc8b03e4395f924f61a);
+            
+        
+
+        circle_marker_41cd6a5f00d3efba37142dc97eb0db14.bindPopup(popup_4ac2c148d7372f096dbc07c2cf05a7c1)
+        ;
+
+        
+    
+    
+            circle_marker_41cd6a5f00d3efba37142dc97eb0db14.bindTooltip(
+                `<div>
+                     3. Covirán Guadix B.A. — Conductor FUR-TA-02
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_b31ecb6e966361855262e5a755b8cd23 = L.circleMarker(
+                [37.3012, -3.1555],
+                {"bubblingMouseEvents": true, "color": "#C73E1D", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#C73E1D", "fillOpacity": 0.85, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 3}
+            ).addTo(feature_group_dc1f87dbdaa196f69f34fa8de5fb0daf);
+        
+    
+        var popup_13c342b32b02f2c1d93f9b99e1260845 = L.popup({
+  "maxWidth": 210,
+});
+
+        
+            
+                var html_50aea7d1d721596cf8ba9746a59f42b8 = $(`<div id="html_50aea7d1d721596cf8ba9746a59f42b8" style="width: 100.0%; height: 100.0%;"><div style="font-family:Arial;                                    min-width:170px;">                         <b>Parada 4 de 4</b><br>                         <b>Covirán Cogollos G.</b><br>                         <hr style="margin:4px 0;">                         🚚 Conductor FUR-TA-02<br>                         🕐 Salida: 06:00<br>                         ⚡ Recarga: NO                                              </div></div>`)[0];
+                popup_13c342b32b02f2c1d93f9b99e1260845.setContent(html_50aea7d1d721596cf8ba9746a59f42b8);
+            
+        
+
+        circle_marker_b31ecb6e966361855262e5a755b8cd23.bindPopup(popup_13c342b32b02f2c1d93f9b99e1260845)
+        ;
+
+        
+    
+    
+            circle_marker_b31ecb6e966361855262e5a755b8cd23.bindTooltip(
+                `<div>
+                     4. Covirán Cogollos G. — Conductor FUR-TA-02
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var poly_line_f91d8515e1363f966ba2ddae634094e6 = L.polyline(
+                [[37.4912, -2.7712], [37.3112, -3.0955], [37.3022, -3.1312], [37.3012, -3.1355], [37.3012, -3.1555], [37.4912, -2.7712]],
+                {"bubblingMouseEvents": true, "color": "#C73E1D", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "#C73E1D", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.7, "smoothFactor": 1.0, "stroke": true, "weight": 2}
+            ).addTo(feature_group_dc1f87dbdaa196f69f34fa8de5fb0daf);
+        
+    
+            poly_line_f91d8515e1363f966ba2ddae634094e6.bindTooltip(
+                `<div>
+                     Conductor FUR-TA-02 | 4 tiendas | 102.12 km | Coste: 18.38 €
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            feature_group_dc1f87dbdaa196f69f34fa8de5fb0daf.addTo(map_86cf5263c449be8053ae79b04029163b);
+        
+    
+            var feature_group_41a4268147197aa2662e8dbb123a2706 = L.featureGroup(
+                {
+}
+            );
+        
+    
+            var circle_marker_682f86038e40009f9a5b3ecccd016284 = L.circleMarker(
+                [37.5012, -3.2055],
+                {"bubblingMouseEvents": true, "color": "#44BBA4", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#44BBA4", "fillOpacity": 0.85, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 3}
+            ).addTo(feature_group_41a4268147197aa2662e8dbb123a2706);
+        
+    
+        var popup_288c7fdab5035bca6fd6874b77d002f4 = L.popup({
+  "maxWidth": 210,
+});
+
+        
+            
+                var html_3576baefeba782ef8d10c8863a2561a0 = $(`<div id="html_3576baefeba782ef8d10c8863a2561a0" style="width: 100.0%; height: 100.0%;"><div style="font-family:Arial;                                    min-width:170px;">                         <b>Parada 1 de 3</b><br>                         <b>Covirán Pedro Mart.</b><br>                         <hr style="margin:4px 0;">                         🚚 Conductor FUR-TA-03<br>                         🕐 Salida: 06:00<br>                         ⚡ Recarga: NO                                              </div></div>`)[0];
+                popup_288c7fdab5035bca6fd6874b77d002f4.setContent(html_3576baefeba782ef8d10c8863a2561a0);
+            
+        
+
+        circle_marker_682f86038e40009f9a5b3ecccd016284.bindPopup(popup_288c7fdab5035bca6fd6874b77d002f4)
+        ;
+
+        
+    
+    
+            circle_marker_682f86038e40009f9a5b3ecccd016284.bindTooltip(
+                `<div>
+                     1. Covirán Pedro Mart. — Conductor FUR-TA-03
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_55f8007c603c44e734df16932468c058 = L.circleMarker(
+                [37.3455, -3.1755],
+                {"bubblingMouseEvents": true, "color": "#44BBA4", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#44BBA4", "fillOpacity": 0.85, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 3}
+            ).addTo(feature_group_41a4268147197aa2662e8dbb123a2706);
+        
+    
+        var popup_1aac4e9589cc133c0bc06f31bc7094c6 = L.popup({
+  "maxWidth": 210,
+});
+
+        
+            
+                var html_67d94827ad82001bef273121554dbc00 = $(`<div id="html_67d94827ad82001bef273121554dbc00" style="width: 100.0%; height: 100.0%;"><div style="font-family:Arial;                                    min-width:170px;">                         <b>Parada 2 de 3</b><br>                         <b>Covirán Benalúa</b><br>                         <hr style="margin:4px 0;">                         🚚 Conductor FUR-TA-03<br>                         🕐 Salida: 06:00<br>                         ⚡ Recarga: NO                                              </div></div>`)[0];
+                popup_1aac4e9589cc133c0bc06f31bc7094c6.setContent(html_67d94827ad82001bef273121554dbc00);
+            
+        
+
+        circle_marker_55f8007c603c44e734df16932468c058.bindPopup(popup_1aac4e9589cc133c0bc06f31bc7094c6)
+        ;
+
+        
+    
+    
+            circle_marker_55f8007c603c44e734df16932468c058.bindTooltip(
+                `<div>
+                     2. Covirán Benalúa — Conductor FUR-TA-03
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_3201a9016ff95636b40454bd0deb6ac7 = L.circleMarker(
+                [37.3155, -3.1888],
+                {"bubblingMouseEvents": true, "color": "#44BBA4", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#44BBA4", "fillOpacity": 0.85, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 3}
+            ).addTo(feature_group_41a4268147197aa2662e8dbb123a2706);
+        
+    
+        var popup_2c89fbbf99aca5f0341a8b412a5df5c0 = L.popup({
+  "maxWidth": 210,
+});
+
+        
+            
+                var html_c1a67ab421baca7189340aa44657e44e = $(`<div id="html_c1a67ab421baca7189340aa44657e44e" style="width: 100.0%; height: 100.0%;"><div style="font-family:Arial;                                    min-width:170px;">                         <b>Parada 3 de 3</b><br>                         <b>Covirán Purullena</b><br>                         <hr style="margin:4px 0;">                         🚚 Conductor FUR-TA-03<br>                         🕐 Salida: 06:00<br>                         ⚡ Recarga: NO                                              </div></div>`)[0];
+                popup_2c89fbbf99aca5f0341a8b412a5df5c0.setContent(html_c1a67ab421baca7189340aa44657e44e);
+            
+        
+
+        circle_marker_3201a9016ff95636b40454bd0deb6ac7.bindPopup(popup_2c89fbbf99aca5f0341a8b412a5df5c0)
+        ;
+
+        
+    
+    
+            circle_marker_3201a9016ff95636b40454bd0deb6ac7.bindTooltip(
+                `<div>
+                     3. Covirán Purullena — Conductor FUR-TA-03
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var poly_line_cbceec6272553ea32e728de8ab12e44f = L.polyline(
+                [[37.4912, -2.7712], [37.5012, -3.2055], [37.3455, -3.1755], [37.3155, -3.1888], [37.4912, -2.7712]],
+                {"bubblingMouseEvents": true, "color": "#44BBA4", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "#44BBA4", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.7, "smoothFactor": 1.0, "stroke": true, "weight": 2}
+            ).addTo(feature_group_41a4268147197aa2662e8dbb123a2706);
+        
+    
+            poly_line_cbceec6272553ea32e728de8ab12e44f.bindTooltip(
+                `<div>
+                     Conductor FUR-TA-03 | 3 tiendas | 128.43 km | Coste: 23.12 €
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            feature_group_41a4268147197aa2662e8dbb123a2706.addTo(map_86cf5263c449be8053ae79b04029163b);
+        
+    
+            var layer_control_ad6d7e14c4acfa6abe8c4057d00be015_layers = {
+                base_layers : {
+                    "openstreetmap" : tile_layer_618a49c132720596b0bb198763146a16,
+                },
+                overlays :  {
+                    "\u26a1 Conductor FUR-TA-01 (5 tiendas, 249.19 km)" : feature_group_0892071bfd2b347b460acfda1f254c29,
+                    "\ud83d\ude9a Conductor FUR-TA-02 (4 tiendas, 102.12 km)" : feature_group_dc1f87dbdaa196f69f34fa8de5fb0daf,
+                    "\ud83d\ude9a Conductor FUR-TA-03 (3 tiendas, 128.43 km)" : feature_group_41a4268147197aa2662e8dbb123a2706,
+                },
+            };
+            let layer_control_ad6d7e14c4acfa6abe8c4057d00be015 = L.control.layers(
+                layer_control_ad6d7e14c4acfa6abe8c4057d00be015_layers.base_layers,
+                layer_control_ad6d7e14c4acfa6abe8c4057d00be015_layers.overlays,
+                {
+  "position": "topleft",
+  "collapsed": false,
+  "autoZIndex": true,
+}
+            ).addTo(map_86cf5263c449be8053ae79b04029163b);
+
+        
+</script>
+</html>
