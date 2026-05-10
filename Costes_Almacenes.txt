@@ -1,0 +1,136 @@
+=================================================================
+  INFORME DE COSTES POR ALMACÉN
+=================================================================
+
+  ALMACÉN: Andújar
+  ──────────────────────────────────────────────────
+  Supermercados abastecidos : 70
+  Rutas realizadas          : 16
+  Conductores               : 16
+  Rutas con recarga         : 5
+  Km totales                : 2168.88 km
+  Coste mantenimiento       : 390.41 €
+  Coste energía (recargas)  : 137.10 €
+  COSTE TOTAL               : 527.51 €
+
+  ALMACÉN: Atarfe (Central)
+  ──────────────────────────────────────────────────
+  Supermercados abastecidos : 162
+  Rutas realizadas          : 34
+  Conductores               : 34
+  Rutas con recarga         : 0
+  Km totales                : 2015.86 km
+  Coste mantenimiento       : 362.84 €
+  Coste energía (recargas)  : 0.00 €
+  COSTE TOTAL               : 362.84 €
+
+  ALMACÉN: Baza
+  ──────────────────────────────────────────────────
+  Supermercados abastecidos : 12
+  Rutas realizadas          : 3
+  Conductores               : 3
+  Rutas con recarga         : 1
+  Km totales                : 479.74 km
+  Coste mantenimiento       : 86.35 €
+  Coste energía (recargas)  : 26.18 €
+  COSTE TOTAL               : 112.53 €
+
+  ALMACÉN: Cartaya
+  ──────────────────────────────────────────────────
+  Supermercados abastecidos : 20
+  Rutas realizadas          : 5
+  Conductores               : 5
+  Rutas con recarga         : 1
+  Km totales                : 489.92 km
+  Coste mantenimiento       : 88.18 €
+  Coste energía (recargas)  : 30.94 €
+  COSTE TOTAL               : 119.12 €
+
+  ALMACÉN: Casabermeja
+  ──────────────────────────────────────────────────
+  Supermercados abastecidos : 113
+  Rutas realizadas          : 25
+  Conductores               : 25
+  Rutas con recarga         : 1
+  Km totales                : 2821.20 km
+  Coste mantenimiento       : 507.82 €
+  Coste energía (recargas)  : 24.28 €
+  COSTE TOTAL               : 532.10 €
+
+  ALMACÉN: Dos Hermanas
+  ──────────────────────────────────────────────────
+  Supermercados abastecidos : 90
+  Rutas realizadas          : 22
+  Conductores               : 22
+  Rutas con recarga         : 3
+  Km totales                : 2353.33 km
+  Coste mantenimiento       : 423.59 €
+  Coste energía (recargas)  : 82.82 €
+  COSTE TOTAL               : 506.41 €
+
+  ALMACÉN: El Ejido
+  ──────────────────────────────────────────────────
+  Supermercados abastecidos : 50
+  Rutas realizadas          : 11
+  Conductores               : 11
+  Rutas con recarga         : 1
+  Km totales                : 1125.27 km
+  Coste mantenimiento       : 202.53 €
+  Coste energía (recargas)  : 28.56 €
+  COSTE TOTAL               : 231.09 €
+
+  ALMACÉN: Jaén
+  ──────────────────────────────────────────────────
+  Supermercados abastecidos : 52
+  Rutas realizadas          : 12
+  Conductores               : 12
+  Rutas con recarga         : 1
+  Km totales                : 1189.39 km
+  Coste mantenimiento       : 214.09 €
+  Coste energía (recargas)  : 25.70 €
+  COSTE TOTAL               : 239.79 €
+
+  ALMACÉN: Jerez de la Frontera
+  ──────────────────────────────────────────────────
+  Supermercados abastecidos : 38
+  Rutas realizadas          : 9
+  Conductores               : 9
+  Rutas con recarga         : 0
+  Km totales                : 682.50 km
+  Coste mantenimiento       : 122.86 €
+  Coste energía (recargas)  : 0.00 €
+  COSTE TOTAL               : 122.86 €
+
+  ALMACÉN: Motril
+  ──────────────────────────────────────────────────
+  Supermercados abastecidos : 50
+  Rutas realizadas          : 9
+  Conductores               : 9
+  Rutas con recarga         : 1
+  Km totales                : 690.39 km
+  Coste mantenimiento       : 124.27 €
+  Coste energía (recargas)  : 25.70 €
+  COSTE TOTAL               : 149.97 €
+
+  ALMACÉN: Puerto Real
+  ──────────────────────────────────────────────────
+  Supermercados abastecidos : 64
+  Rutas realizadas          : 14
+  Conductores               : 14
+  Rutas con recarga         : 1
+  Km totales                : 898.85 km
+  Coste mantenimiento       : 161.79 €
+  Coste energía (recargas)  : 28.56 €
+  COSTE TOTAL               : 190.35 €
+
+=================================================================
+  TOTALES GLOBALES
+=================================================================
+  Supermercados totales      : 721
+  Rutas totales              : 160
+  Conductores totales        : 160
+  Rutas con recarga          : 15
+  Km totales                 : 14915.33 km
+  Coste mantenimiento total  : 2684.73 €
+  Coste energía total        : 409.84 €
+  COSTE TOTAL GLOBAL         : 3094.57 €
